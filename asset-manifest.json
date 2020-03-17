@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/OrderFormReact/static/css/main.8bce8e2f.chunk.css",
+    "main.js": "/OrderFormReact/static/js/main.bd41494d.chunk.js",
+    "main.js.map": "/OrderFormReact/static/js/main.bd41494d.chunk.js.map",
+    "runtime-main.js": "/OrderFormReact/static/js/runtime-main.54298d77.js",
+    "runtime-main.js.map": "/OrderFormReact/static/js/runtime-main.54298d77.js.map",
+    "static/js/2.a861849d.chunk.js": "/OrderFormReact/static/js/2.a861849d.chunk.js",
+    "static/js/2.a861849d.chunk.js.map": "/OrderFormReact/static/js/2.a861849d.chunk.js.map",
+    "index.html": "/OrderFormReact/index.html",
+    "precache-manifest.652e1f82e129ab30cc2d520cc4cf882d.js": "/OrderFormReact/precache-manifest.652e1f82e129ab30cc2d520cc4cf882d.js",
+    "service-worker.js": "/OrderFormReact/service-worker.js",
+    "static/css/main.8bce8e2f.chunk.css.map": "/OrderFormReact/static/css/main.8bce8e2f.chunk.css.map",
+    "static/js/2.a861849d.chunk.js.LICENSE.txt": "/OrderFormReact/static/js/2.a861849d.chunk.js.LICENSE.txt",
+    "static/media/Logo.png": "/OrderFormReact/static/media/Logo.4035fb51.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.54298d77.js",
+    "static/js/2.a861849d.chunk.js",
+    "static/css/main.8bce8e2f.chunk.css",
+    "static/js/main.bd41494d.chunk.js"
+  ]
+}
