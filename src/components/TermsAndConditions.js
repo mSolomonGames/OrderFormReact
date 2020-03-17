@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import { Paper,Grid, makeStyles, Typography ,FormControlLabel,Checkbox} from '@material-ui/core';
+import { Paper,Grid, makeStyles, Typography ,FormControlLabel,Checkbox, Link} from '@material-ui/core';
 import { AppContext } from '../context';
 import { SubmitButton } from '.';
 
@@ -39,6 +39,8 @@ export default () => {
 
     const [state, setState ] = useContext(AppContext);
 
+    const preventDefault = event => event.preventDefault();
+
     return (
         <Paper className={classes.root}>
         <Grid container spacing={0} justify="center">
@@ -50,19 +52,22 @@ export default () => {
                             <Grid className={classes.firstItem} item md ={10} xs={10}>
                             <Typography  paragraph={true} color="textPrimary" align="center" variant="body1">All Fibre and accounts are area specific, might not be available in all areas. Please note: It is the Clients'
                                 responsibility to cancel or terminate any existing agreements with their current ISP to avoid duplicate
-                                INTERNET cost. We will manage bandwidth usage to the best of our ability during peak periods; however, it
-                                remains a best effort service. Termination of account is a calendar month.</Typography>
+                                INTERNET cost.</Typography>
                             </Grid>
-                            <Grid item md ={10} xs={10}>
-                            <Typography paragraph={true} color="textPrimary" align="center" variant="body1">Please note that cancellations received after the 3rd of the month will only be processed in the following
-                                month which will end at the end of the following month. All accounts are pre-paid. Business accounts has a
-                                SLA of 6 hours where Home users have a SLA of 8-12 hours. Cancellations within contract period is subject
-                                to pay difference within contract months left.</Typography>
+                            <Grid className={classes.firstItem} item md ={10} xs={10}>
+                                <Typography  paragraph={true} color="textPrimary" align="center" variant="body1">We will manage bandwidth usage to the best of our ability during peak periods; however, it remains a best effort service.
+                                Termination of account is a calendar month. Please note that cancellations received after the 3rd of the month will only be
+                                processed in the following month which will end at the end of the following month. All accounts are pre-paid. Cancellations
+                                within contract period is subject to pay difference within contract months left.</Typography>
                             </Grid>
+                            <Grid className={classes.firstItem} item md ={10} xs={10}>
+                                <Typography  paragraph={true} color="textPrimary" align="center" variant="body1">Please read the full Terms and Conditions on the website www.crispfibre.co.za</Typography>
+                            </Grid>
+                            
                         </Grid>
                         
                     </Grid>
-                    <Grid item md={6}>
+                    <Grid item md={8} xs={12}>
                         <Grid container justify="center">
                             <Grid item md={8}>
                             <FormControlLabel  align="center" className={classes.formLabel}
@@ -75,7 +80,7 @@ export default () => {
                                                                      
                                 />
                                 }
-                                label={<Typography className={classes.label} color="textPrimary" align="left" variant="body1">I accept the Terms & Conditions</Typography>}
+                                label={<Typography className={classes.label} color="textPrimary" align="left" variant="body1">I accept the <Link href="#TCs" onclick={preventDefault}> Terms & Conditions</Link></Typography>}
                             />
                             </Grid>
                         </Grid>

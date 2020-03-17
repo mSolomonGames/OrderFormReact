@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import { Button,Paper, Grid, Typography,makeStyles } from '@material-ui/core';
+import { Button,Paper, Grid, Typography,makeStyles , Dialog, DialogTitle,DialogContent,DialogContentText, DialogActions} from '@material-ui/core';
 import { AppContext } from '../context';
 
 const useStyles = makeStyles(theme => ({
@@ -12,11 +12,21 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
+
 // function submitForm(props){
 //     console.log(props);
 // };
 
 export default () => {
+    const [open, setOpen] = React.useState(false);
+    const handleSubmitForm = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
     const classes = useStyles();
     const [state, setState ] = useContext(AppContext);
     function submitForm(){
@@ -80,9 +90,29 @@ export default () => {
         //<Paper className={classes.root}>
             <Grid container justify="center">
                 <Grid item md={4}>
-                <Button className={classes.buttonStyle} onClick={() => submitForm()} variant="contained" color="primary" >
+                <Button className={classes.buttonStyle} onClick={handleSubmitForm} variant="contained" color="primary" >
                     <Typography>Submit</Typography>
                 </Button>
+                <Dialog
+                    open={open}
+                    onClose={handleClose}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                >
+                    <DialogTitle id="alert-dialog-title">{"Provided information is correct?"}</DialogTitle>
+                    <DialogContent>
+                    <DialogContentText id="alert-dialog-description"><Typography color="textPrimary">I agree that the provided information is correct.</Typography>                        
+                    </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                    <Button onClick={handleClose} color="primary">
+                        <Typography>Disagree</Typography>                        
+                    </Button>
+                    <Button onClick={handleClose} color="primary" autoFocus>                        
+                        <Typography>Agree</Typography>
+                    </Button>
+                    </DialogActions>
+                </Dialog>
                 </Grid>
             </Grid>
         //</Paper>

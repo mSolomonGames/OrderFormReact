@@ -40,10 +40,13 @@ const theme = createMuiTheme({
       MuiListItem :{
         root:{
           "&.Mui-selected": {
-            backgroundColor: 'rgba(18, 75, 115,0.5)',
+            
+            backgroundColor:'rgba(79, 186, 8,0.9)',
+            //backgroundColor: 'rgba(18, 75, 115,0.5)',
           },
           "&.Mui-selected:hover": {
-            backgroundColor: 'rgba(18, 75, 115,0.7)',
+            //backgroundColor: 'rgba(18, 75, 115,0.7)',
+            backgroundColor:'rgba(79, 186, 8,0.8)',
           },
           "&:hover": {
             backgroundColor: 'black',
@@ -52,7 +55,8 @@ const theme = createMuiTheme({
         },   
         button:{
           "&:hover": {
-            backgroundColor: 'rgba(18, 75, 115,0.7)',
+            //backgroundColor: 'rgba(18, 75, 115,0.7)',
+            backgroundColor:'rgba(79, 186, 8,0.6)',
           },
         } 
             

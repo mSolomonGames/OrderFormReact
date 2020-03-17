@@ -41,6 +41,7 @@ export default () => {
     const classes = useStyles();
     const [state, setState ] = useContext(AppContext);
 
+    const [bank,setBank] = useState('');
     const [branch,setBranch] = useState('');
     const [branchCode,setBranchCode] = useState('');
     const [accountName,setAccountName] = useState('');
@@ -50,13 +51,14 @@ export default () => {
     
 
     useEffect(() => {        
+        setState(state => ({ ...state, bank:  bank}));
         setState(state => ({ ...state, branch:  branch}));
         setState(state => ({...state, branchCode: branchCode}));
         setState(state => ({...state, accountName: accountName}));
         setState(state => ({...state, accountType: accountType}));
         setState(state => ({...state, accountNumber: accountNumber}));
         
-      }, [branch, branchCode, accountName, accountNumber,accountType],
+      }, [bank,branch, branchCode, accountName, accountNumber,accountType],
         
       );
 
@@ -68,27 +70,32 @@ export default () => {
                 <Typography align="center" variant="h4">Bank Details</Typography>
             </Grid>
             <Grid item md={10} xs={10}>
+                
                 <Grid container justify="flex-start">
                     <Grid item md={6} xs={10} className={classes.inputGroup}>
-                    <InputLabel  id="branchLabel"  className={classes.label}>Branch</InputLabel>
-                    <TextField onChange={e => setBranch(e.target.value)}  value={branch} className={classes.textField}  />
-                </Grid>
-                <Grid item md={6} xs={10} className={classes.inputGroup}>
-                    <InputLabel id="branchCodeLabel"  className={classes.label}>Branch Code</InputLabel>
-                    <TextField onChange={e => setBranchCode(e.target.value)}  value={branchCode} className={classes.textField} />
-                </Grid>
-                <Grid item md={6} xs={10} className={classes.inputGroup}>
-                    <InputLabel id="accountNameLabel"className={classes.label}>Account Name</InputLabel>
-                    <TextField onChange={e => setAccountName(e.target.value)}  value={accountName} className={classes.textField} />
-                </Grid>
-                <Grid item md={6} xs={10} className={classes.inputGroup}>
-                    <InputLabel id="accountNumberLabel" className={classes.label}>Account Number</InputLabel>
-                    <TextField onChange={e => setAccountNumber(e.target.value)}  value={accountNumber} className={classes.textField} />
-                </Grid>
-                <Grid item  md={6} xs={10}className={classes.inputGroup} >
-                    <InputLabel id="accountTypeLabel"  className={classes.label}>Account Type</InputLabel>
-                    <TextField onChange={e => setAccountType(e.target.value)}  value={accountType}  className={classes.textField} />
-                </Grid>
+                        <InputLabel  id="bankLabel"  className={classes.label}>Bank</InputLabel>
+                        <TextField onChange={e => setBranch(e.target.value)}  value={bank} className={classes.textField}  />
+                    </Grid>
+                    <Grid item md={6} xs={10} className={classes.inputGroup}>
+                        <InputLabel  id="branchLabel"  className={classes.label}>Branch</InputLabel>
+                        <TextField onChange={e => setBranch(e.target.value)}  value={branch} className={classes.textField}  />
+                    </Grid>
+                    <Grid item md={6} xs={10} className={classes.inputGroup}>
+                        <InputLabel id="branchCodeLabel"  className={classes.label}>Branch Code</InputLabel>
+                        <TextField onChange={e => setBranchCode(e.target.value)}  value={branchCode} className={classes.textField} />
+                    </Grid>
+                    <Grid item md={6} xs={10} className={classes.inputGroup}>
+                        <InputLabel id="accountNameLabel"className={classes.label}>Account Name</InputLabel>
+                        <TextField onChange={e => setAccountName(e.target.value)}  value={accountName} className={classes.textField} />
+                    </Grid>
+                    <Grid item md={6} xs={10} className={classes.inputGroup}>
+                        <InputLabel id="accountNumberLabel" className={classes.label}>Account Number</InputLabel>
+                        <TextField onChange={e => setAccountNumber(e.target.value)}  value={accountNumber} className={classes.textField} />
+                    </Grid>
+                    <Grid item  md={6} xs={10}className={classes.inputGroup} >
+                        <InputLabel id="accountTypeLabel"  className={classes.label}>Account Type</InputLabel>
+                        <TextField onChange={e => setAccountType(e.target.value)}  value={accountType}  className={classes.textField} />
+                    </Grid>
 
                 </Grid>
             </Grid>

@@ -1,16 +1,20 @@
 import React, {useState,useContext, useEffect} from 'react';
 import { Paper,List,ListItem,ListItemText, Grid,makeStyles , Typography} from '@material-ui/core';
 import { AppContext } from '../context';
+import moment from 'moment';
 
 const useStyles = makeStyles(theme => ({
     root: {
-        marginBottom: theme.spacing(4),
+        margin:theme.spacing(0),
+        marginBottom: theme.spacing(0),
         padding: theme.spacing(0),
+        
         
     },
     packageContainer: {
         marginBottom: theme.spacing(4),
-        padding: theme.spacing(2)
+        padding: theme.spacing(2),
+        paddingBottom: theme.spacing(0),
     },
     gridHeading:{
         background: theme.palette.primary.main,
@@ -80,9 +84,9 @@ export default () => {
     }, [fibre_package_index]);
 
     return (        
-        <Grid container className={classes.root} justify="center" alignItems="center">
+        <Grid container className={classes.root} justify="center" alignItems="flex-start">
             
-            <Grid item md={12} xs={12}>
+            <Grid item md={6} xs={12}>
                 <Typography className={classes.mainHeading} color="textSecondary" align="center" variant="h4">Fibre Packages</Typography>
                 <List className={classes.listOptions} component="nav" aria-label="">
                     
@@ -94,28 +98,19 @@ export default () => {
                             value={fibre_package_index}
                             key={i}
                          >
-                         <ListItemText primary={<Typography align="center" >{p.speed} {p.name} , R{p.price}</Typography>}/>
+                         <ListItemText primary={<Typography  align="center" >{p.speed} {p.name} , R{p.price}</Typography>}/>
                          </ListItem>
 
                     ))}
                 </List>
                                
             </Grid>
-            <Grid item xs={12}>
-                <Grid container className={classes.gridHeading} justify="center"> 
-                        <Grid item md={4} xs={4}>
-                            <Typography color="textSecondary" variant="h5" align="center" >Installation Package</Typography>
-                        </Grid>
-                        <Grid item md={4} xs={4}>
-                            <Typography color="textSecondary" variant="h5" align="center" >Time Period</Typography>
-                        </Grid>
-                        <Grid item md={4} xs={4}>
-                            <Typography color="textSecondary" variant="h5" align="center" >Pricing</Typography>
-                        </Grid>
-                        
-                </Grid>
-                <Grid container justify="center">
+            
+            <Grid item md={6} xs={12}>
+                
+                {/* <Grid container justify="center"> */}
                 <Grid item md={12} xs={12}>
+                <Typography className={classes.mainHeading} color="textSecondary" align="center" variant="h4">Installation Packages</Typography>
                         <List className={classes.listOptions} component="nav" aria-label="">
                     {installation.map((p, index) => (
                          <ListItem
@@ -141,8 +136,12 @@ export default () => {
                             ))}
                         </List>
 
-                        </Grid>
-                </Grid>
+                    </Grid>
+                    
+                {/* </Grid> */}
+            </Grid>
+            <Grid item xs={12} md={12} className={classes.gridHeading}>
+                <Typography style={{padding: "10px",paddingLeft: "20px"}} variant="subtitle1" color="textSecondary">Contract is valid till: {moment().add('months', 12).date(1).subtract('days', 1).format('LL')}</Typography>
             </Grid>
             
         </Grid>

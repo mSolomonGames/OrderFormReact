@@ -112,51 +112,59 @@ export default () => {
                 <Typography variant="h4" align="center" color="textSecondary">Debit Order Mandate</Typography>
             </Grid>
             <Grid item md={10} xs={10}>
-                <Typography  align="center" paragraph={true} align="left">This signed Authority and Mandate refers to our contract dated (“the Agreement”).
-                I/We hereby authorise you to issue and deliver payment instructions to your Banker for collection against my/our abovementioned
-                account at my/our above-mentioned Bank (or any other bank or branch to which I/we may transfer my/our account)
-                on condition that the sum of such payment instructions will never exceed my/our obligations as agreed to in the Agreement and
-                commencing on <span className={classes.date}>{state.payDate}</span> and continuing until this Authority and Mandate is terminated by me/us by giving you notice in
-                writing of not less than 20 ordinary working days, and sent by prepaid registered post or delivered to your address as indicated
-                above. </Typography>
+                <Typography  align="left" paragraph={true} align="left">The individual payment instructions so authorised to be issued must be issued and delivered as follows </Typography>
             </Grid>
-            
             <Grid item md={10} xs={10}>
-                <Typography  align="center" paragraph={true} variant="body1"> The individual payment instructions so authorised to be issued must be issued and delivered as follows: monthly. In the event
-                that the payment day falls on a Sunday, or recognised South African public holiday, the payment day will automatically be the
-                preceding ordinary business day.
-                I / We understand that the withdrawals hereby authorized will be processed through a computerized system provided by the
-                South African Banks and I also understand that details of each withdrawal will be printed on my bank statement. Each
-                transaction will contain a number, which must be included in the said payment instruction and if provided to you should enable
-                you to identify the Agreement. A payment reference is added to this form before the issuing of any payment instruction.</Typography>
-                
+                <Typography  align="left" paragraph={true} align="left">1) On the day ___________________ ("payment day") of each and every month commencing on ______________ day ("payment day") of each and
+                    every month commencing on. In the event that the payment day falls on a Saturday, Sunday or recognized South African public
+                    holiday, the payment day will automatically be the very next ordinary business day. 2) Monthly; on or after the dates when the
+                    obligation in terms of the Agreement is due and the amount of each individual payment instruction may not be more or less that
+                    the obligation due; 3) Bi-monthly; on or after the dates when the obligation in terms of the Agreement is due and the amount of
+                    each individual payment instruction may not be more or less that the obligation due; 4) Three-monthly; on or after the dates
+                    when the obligation in terms of the Agreement is due and the amount of each individual payment instruction may not be more
+                    or less that the obligation due;</Typography>
             </Grid>
 
             <Grid item md={10} xs={10}>
-                <Typography   align="center" variant="h5">Mandate</Typography>
+                <Typography  align="left" paragraph={true} align="left">5) Six-monthly; on or after the dates when the obligation in terms of the Agreement is due ant the amount of each individual
+                payment instruction may not be more or less than the obligation due; 6) Annually; on or after the dates when the obligation in
+                terms of the Agreement is due and the amount of each individual payment instruction may not be more or less than the
+                obligation due; 7) Weekly; on or after the dates when the obligation in terms of the Agreement is due and the amount of each
+                individual payment instruction may not be more or less than the obligation due; 8) Bi-weekly; on or after the dates when the
+                obligation in terms of the agreement is due and the amount of each individual payment instruction may not be more or less
+                than the obligation due.</Typography>
+            </Grid>
+            <Grid item md={10} xs={10}>
+                <Typography  align="left" paragraph={true} align="left">We understand that the withdrawals hereby authorised will be processed through a computerized system provided by the South
+                African Banks and I also understand that details of each withdrawal will be printed on my bank statement. Each transaction will
+                contain a number.</Typography>
+            </Grid>
+
+            <Grid item md={10} xs={10}>
+                <Typography   align="left" variant="h5">Mandate</Typography>
 
             </Grid>
             <Grid item md={10} xs={10}>
-            <Typography  align="center" variant="body1">I/We acknowledge that all payment instructions issued by you shall be treated by my/our above-mentioned Bank as if the
+            <Typography  align="left" variant="body1">I/We acknowledge that all payment instructions issued by you shall be treated by my/our above-mentioned Bank as if the
             instructions have been issued by me/us personally.</Typography>
                 
             </Grid>
             <Grid item md={10} xs={10}>
-            <Typography  align="center" variant="h5">Cancellation</Typography>
+            <Typography  align="left" variant="h5">Cancellation</Typography>
                 
             </Grid>
             <Grid item md={10} xs={10}>
-            <Typography  align="center" paragraph={true}variant="body1">I/We agree that although this Authority and Mandate may be cancelled by me/us, such cancellation will not cancel the
+            <Typography  align="left" paragraph={true}variant="body1">I/We agree that although this Authority and Mandate may be cancelled by me/us, such cancellation will not cancel the
             Agreement. I/We shall not be entitled to any refund of amounts which you have withdrawn while this Authority was in force, if
             such amounts were legally owing to you.</Typography>
                 
             </Grid>
             <Grid item md={10} xs={10}>
-            <Typography  align="center" variant="h5">Assignment</Typography>
+            <Typography  align="left" variant="h5">Assignment</Typography>
                 
             </Grid>
             <Grid item md={10} xs={10}>
-            <Typography  align="center" paragraph={true} variant="body1">I/We acknowledge that this Authority may be ceded or assigned to a third party if the Agreement is also ceded or assigned to
+            <Typography  align="left" paragraph={true} variant="body1">I/We acknowledge that this Authority may be ceded or assigned to a third party if the Agreement is also ceded or assigned to
             that third party, but in the absence of such assignment of the Agreement, this Authority and Mandate cannot be assigned to any
             third party.</Typography>
                 
