@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/OrderForm/static/css/main.8bce8e2f.chunk.css",
-    "main.js": "/OrderForm/static/js/main.5439061d.chunk.js",
-    "main.js.map": "/OrderForm/static/js/main.5439061d.chunk.js.map",
-    "runtime-main.js": "/OrderForm/static/js/runtime-main.6a2648dd.js",
-    "runtime-main.js.map": "/OrderForm/static/js/runtime-main.6a2648dd.js.map",
-    "static/js/2.176b7fae.chunk.js": "/OrderForm/static/js/2.176b7fae.chunk.js",
-    "static/js/2.176b7fae.chunk.js.map": "/OrderForm/static/js/2.176b7fae.chunk.js.map",
-    "index.html": "/OrderForm/index.html",
-    "precache-manifest.d5063d5ec15e2b36debe8c94e367a0e2.js": "/OrderForm/precache-manifest.d5063d5ec15e2b36debe8c94e367a0e2.js",
-    "service-worker.js": "/OrderForm/service-worker.js",
-    "static/css/main.8bce8e2f.chunk.css.map": "/OrderForm/static/css/main.8bce8e2f.chunk.css.map",
-    "static/js/2.176b7fae.chunk.js.LICENSE.txt": "/OrderForm/static/js/2.176b7fae.chunk.js.LICENSE.txt",
-    "static/media/Logo.png": "/OrderForm/static/media/Logo.4035fb51.png"
+    "main.css": "/OrderFormReact/static/css/main.8bce8e2f.chunk.css",
+    "main.js": "/OrderFormReact/static/js/main.f7b509f4.chunk.js",
+    "main.js.map": "/OrderFormReact/static/js/main.f7b509f4.chunk.js.map",
+    "runtime-main.js": "/OrderFormReact/static/js/runtime-main.54298d77.js",
+    "runtime-main.js.map": "/OrderFormReact/static/js/runtime-main.54298d77.js.map",
+    "static/js/2.176b7fae.chunk.js": "/OrderFormReact/static/js/2.176b7fae.chunk.js",
+    "static/js/2.176b7fae.chunk.js.map": "/OrderFormReact/static/js/2.176b7fae.chunk.js.map",
+    "index.html": "/OrderFormReact/index.html",
+    "precache-manifest.95cb7dccecc4845730b478cb3d5c7dc8.js": "/OrderFormReact/precache-manifest.95cb7dccecc4845730b478cb3d5c7dc8.js",
+    "service-worker.js": "/OrderFormReact/service-worker.js",
+    "static/css/main.8bce8e2f.chunk.css.map": "/OrderFormReact/static/css/main.8bce8e2f.chunk.css.map",
+    "static/js/2.176b7fae.chunk.js.LICENSE.txt": "/OrderFormReact/static/js/2.176b7fae.chunk.js.LICENSE.txt",
+    "static/media/Logo.png": "/OrderFormReact/static/media/Logo.4035fb51.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.6a2648dd.js",
+    "static/js/runtime-main.54298d77.js",
     "static/js/2.176b7fae.chunk.js",
     "static/css/main.8bce8e2f.chunk.css",
-    "static/js/main.5439061d.chunk.js"
+    "static/js/main.f7b509f4.chunk.js"
   ]
 }
