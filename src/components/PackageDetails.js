@@ -26,7 +26,8 @@ const useStyles = makeStyles(theme => ({
     dropDown: {
         width: '200px',
         backgroundColor: theme.palette.secondary.main,
-        minHeight: '50px'
+        minHeight: '50px',
+        borderRadius: theme.spacing(0.5),
     },
 }));
 

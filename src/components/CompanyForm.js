@@ -4,7 +4,8 @@ import { AppContext } from '../context';
 
 const useStyles = makeStyles(theme => ({
     root: {
-        padding: `0 ${theme.spacing(4)}px ${theme.spacing(4)}px ${theme.spacing(4)}px`,
+        padding: theme.spacing(0),
+        paddingBottom: theme.spacing(4),
     },
     label: {
         marginBottom: theme.spacing(1),
@@ -12,7 +13,8 @@ const useStyles = makeStyles(theme => ({
     },
     textField: {
         margin: "0 40px 0 0",
-        width: "400px"
+        width: theme.spacing(40),
+        maxWidth: "90%",
     },
     inputGroup: {
         marginTop: theme.spacing(2)
@@ -52,20 +54,20 @@ export default () => {
 
 
     return (
-        <Grid container className={classes.root}>
-            <Grid item md={6} className={classes.inputGroup}>
+        <Grid container className={classes.root} justify="center">
+            <Grid item md={5} xs={12} className={classes.inputGroup}>
                 <InputLabel id="companyNameLabel" className={classes.label}>Company Name</InputLabel>
                 <TextField onChange={e => setCompanyName(e.target.value)}  value={companyName} className={classes.textField} />
             </Grid>
-            <Grid item md={6} className={classes.inputGroup}>
+            <Grid item md={5} xs={12} className={classes.inputGroup}>
                 <InputLabel id="vatNumberLabel" className={classes.label}>VAT Number</InputLabel>
                 <TextField onChange={e => setVatNum(e.target.value)}  value={vat_num} className={classes.textField} />
             </Grid>
-            <Grid item md={6} className={classes.inputGroup}>
+            <Grid item md={5} xs={12} className={classes.inputGroup}>
                 <InputLabel id="contactPersonLabel" className={classes.label}>Contact Person</InputLabel>
                 <TextField onChange={e => setContactPerson(e.target.value)}  value={contact_person} className={classes.textField} />
             </Grid>
-            <Grid item md={6} className={classes.inputGroup}>
+            <Grid item md={5} xs={12} className={classes.inputGroup}>
                 <InputLabel id="telephoneLabel" className={classes.label}>Telephone Number</InputLabel>
                 <TextField onChange={e => setTelNum(e.target.value)}  value={tel_num} className={classes.textField} />
             </Grid>
@@ -73,23 +75,23 @@ export default () => {
                 <InputLabel id="cellphoneLabel" className={classes.label}>Cellphone Number</InputLabel>
                 <TextField className={classes.textField} />
             </Grid> */}
-            <Grid item md={12} className={classes.inputGroup}>
+            <Grid item md={10} xs={12} className={classes.inputGroup}>
                 <InputLabel id="addressLabel" className={classes.label}>Street Address</InputLabel>
                 <TextField onChange={e => setStreetAddr(e.target.value)}  value={street_addr} multiline fullWidth />
             </Grid>
-            <Grid item md={6} className={classes.inputGroup}>
+            <Grid item md={5} xs={12} className={classes.inputGroup}>
                 <InputLabel id="cityLabel" className={classes.label}>City</InputLabel>
                 <TextField onChange={e => setCity(e.target.value)}  value={city} className={classes.textField} />
             </Grid>
-            <Grid item md={6} className={classes.inputGroup}>
+            <Grid item md={5} xs={12} className={classes.inputGroup}>
                 <InputLabel id="postalLabel" className={classes.label}>Postal Code</InputLabel>
                 <TextField onChange={e => setPostCode(e.target.value)}  value={post_code} className={classes.textField} />
             </Grid>
-            <Grid item md={6} className={classes.inputGroup}>
+            <Grid item md={5} xs={12} className={classes.inputGroup}>
                 <InputLabel id="emailLabel" className={classes.label}>Email Address</InputLabel>
                 <TextField onChange={e => setEmail(e.target.value)}  value={email} className={classes.textField} />
             </Grid>
-            <Grid item md={6} className={classes.inputGroup}>
+            <Grid item md={5} xs={12} className={classes.inputGroup}>
                 <InputLabel id="referredLabel" className={classes.label}>Referred By</InputLabel>
                 <TextField onChange={e => setReferedBy(e.target.value)}  value={refered_by} className={classes.textField} />
             </Grid>

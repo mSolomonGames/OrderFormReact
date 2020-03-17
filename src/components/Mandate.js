@@ -15,6 +15,9 @@ const useStyles = makeStyles(theme => ({
         padding: theme.spacing(1),
         paddingLeft: theme.spacing(2),
         marginBottom: theme.spacing(3),
+        backgroundColor: theme.palette.primary.main,
+        
+        
     },
     body: {
         padding: theme.spacing(4),
@@ -76,11 +79,11 @@ const useStyles = makeStyles(theme => ({
     paddingCenter:{
         [theme.breakpoints.down('sm')]:{
             paddingLeft: theme.spacing(3),
-            marginTop: theme.spacing(8),
+            marginTop: theme.spacing(2),
         },
         [theme.breakpoints.up('md')]:{
             paddingLeft: theme.spacing(6),
-            marginTop: theme.spacing(10),
+            marginTop: theme.spacing(4),
         }
         
     }
@@ -106,7 +109,7 @@ export default () => {
         
         <Grid container className={classes.root} justify="center">
             <Grid item md={12} className={classes.heading}>
-                <Typography variant="h4" align="center" color="textPrimary">Debit Order Mandate</Typography>
+                <Typography variant="h4" align="center" color="textSecondary">Debit Order Mandate</Typography>
             </Grid>
             <Grid item md={10} xs={10}>
                 <Typography  align="center" paragraph={true} align="left">This signed Authority and Mandate refers to our contract dated (“the Agreement”).
@@ -158,10 +161,14 @@ export default () => {
             third party.</Typography>
                 
             </Grid>
+            <Grid item md={12} xs={12} className={classes.heading}>
+            <Typography  color="textSecondary" align="center" variant="h5">Accepting</Typography>  
+            </Grid>
             <Grid item md={7}xs={10} className={classes.paddingCenter}>
                 <InputLabel id="referredLabel" className={classes.label}>Name and Surname</InputLabel>
                 <TextField onChange={e => setMandateFullName(e.target.value)}  value={mandateFullName} className={classes.textField} />
             </Grid>
+            
             <Grid item md={7} xs={10}>
             <FormControlLabel  align="center" className={classes.formLabel}
                                 control={

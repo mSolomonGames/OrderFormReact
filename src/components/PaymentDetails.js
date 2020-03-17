@@ -37,6 +37,7 @@ const useStyles = makeStyles(theme => ({
         width: theme.spacing(30),
         backgroundColor: theme.palette.secondary.main,
         minHeight: '50px',
+        borderRadius: theme.spacing(0.5),
         
     }
 }));
