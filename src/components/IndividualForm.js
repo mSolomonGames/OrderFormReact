@@ -1,4 +1,4 @@
-import React,{useContext, useEffect, useState}from 'react';
+import React,{useContext, useEffect, useState, useMemo}from 'react';
 import { Grid, TextField, makeStyles, InputLabel } from '@material-ui/core';
 import { AppContext } from '../context';
 
@@ -53,25 +53,47 @@ export default () => {
     const [refered_by, setReferedBy] = useState('');
     
 
-    useEffect(() => {        
-        setState(state => ({ ...state, fullName:  fullName}));
-        setState(state => ({...state, ID_num: id_num}));
-        setState(state => ({...state, tel_num: tel_num}));
-        setState(state => ({...state, cell_num: tel_num}));
-        setState(state => ({...state, street_addr: street_addr}));
-        setState(state => ({...state, city: city}));
-        setState(state => ({...state, post_code: post_code}));
-        setState(state => ({...state, email: email}));
-        setState(state => ({...state, refered_by: refered_by}));
-      }, [fullName, id_num, tel_num, cell_num, street_addr, city, post_code, email, refered_by ]
+    useEffect(() => {
+        if(state.pullData){
+            const userDetails = {
+                fullName,
+                id_num,
+                tel_num,
+                tel_num,
+                street_addr,
+                city,
+                post_code,
+                email,
+                refered_by
+            };
+            setState(state => { return {...state, userDetails}});
+        }
         
-      );
+    }, [state.pullData])
+
+
+    // useEffect(() => {        
+    //     setState(state => ({ ...state, fullName:  fullName}));
+    //     setState(state => ({...state, ID_num: id_num}));
+    //     setState(state => ({...state, tel_num: tel_num}));
+    //     setState(state => ({...state, cell_num: tel_num}));
+    //     setState(state => ({...state, street_addr: street_addr}));
+    //     setState(state => ({...state, city: city}));
+    //     setState(state => ({...state, post_code: post_code}));
+    //     setState(state => ({...state, email: email}));
+    //     setState(state => ({...state, refered_by: refered_by}));
+    //   }, [fullName, id_num, tel_num, cell_num, street_addr, city, post_code, email, refered_by ]
+        
+    //   );
 
     return (
         <Grid container className={classes.root} justify="center">
             <Grid item md={5} xs={10}className={classes.inputGroup}>
                 <InputLabel  id="fullNameLabel"  className={classes.label}>Full Name</InputLabel>
-                <TextField required={true} onChange={e => setFullName(e.target.value)}  value={fullName} className={classes.textField}  />
+                <TextField required={true} 
+                    onChange={e => setFullName(e.target.value)}
+                    value={fullName} className={classes.textField}  />
+                {/* <TextField required={true} onChange={e => setFullName(e.target.value)}  value={fullName} className={classes.textField}  /> */}
             </Grid>
             <Grid item  md={5} xs={10} className={classes.inputGroup}>
                 <InputLabel id="idNumberLabel"  className={classes.label}>SA ID Number</InputLabel>

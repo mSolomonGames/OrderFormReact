@@ -18,8 +18,12 @@ const useStyles = makeStyles(theme => ({
 // };
 
 export default () => {
+    const classes = useStyles();
+    const [state, setState ] = useContext(AppContext);
     const [open, setOpen] = React.useState(false);
+    
     const handleSubmitForm = () => {
+
         setOpen(true);
     };
 
@@ -27,8 +31,7 @@ export default () => {
         setOpen(false);
     };
 
-    const classes = useStyles();
-    const [state, setState ] = useContext(AppContext);
+    
     function submitForm(){
         console.log(state);
         if(state.applicationType === "individual"){
@@ -90,7 +93,10 @@ export default () => {
         //<Paper className={classes.root}>
             <Grid container justify="center">
                 <Grid item md={4}>
-                <Button className={classes.buttonStyle} onClick={handleSubmitForm} variant="contained" color="primary" >
+                <Button className={classes.buttonStyle} 
+                type="submit"
+                onClick={handleSubmitForm} 
+                variant="contained" color="primary" disabled={!state.acceptedTandCs}>
                     <Typography>Submit</Typography>
                 </Button>
                 <Dialog
@@ -99,16 +105,15 @@ export default () => {
                     aria-labelledby="alert-dialog-title"
                     aria-describedby="alert-dialog-description"
                 >
-                    <DialogTitle id="alert-dialog-title">{"Provided information is correct?"}</DialogTitle>
+                    <DialogTitle id="alert-dialog-title">Provided information is correct?</DialogTitle>
                     <DialogContent>
-                    <DialogContentText id="alert-dialog-description"><Typography color="textPrimary">I agree that the provided information is correct.</Typography>                        
-                    </DialogContentText>
+                        <DialogContentText color="textPrimary" id="alert-dialog-description">I agree that the provided information is correct.</DialogContentText>
                     </DialogContent>
                     <DialogActions>
                     <Button onClick={handleClose} color="primary">
                         <Typography>Disagree</Typography>                        
                     </Button>
-                    <Button onClick={handleClose} color="primary" autoFocus>                        
+                    <Button onClick={handleClose} color="primary" autoFocus type="submit">                        
                         <Typography>Agree</Typography>
                     </Button>
                     </DialogActions>

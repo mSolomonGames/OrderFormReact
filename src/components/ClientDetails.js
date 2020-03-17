@@ -43,8 +43,6 @@ export default () => {
     const classes = useStyles();
     const [state, setState ] = useContext(AppContext);
 
-    
-
     return (
         
         <Paper className={classes.root}>

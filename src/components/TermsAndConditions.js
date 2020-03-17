@@ -80,7 +80,7 @@ export default () => {
                                                                      
                                 />
                                 }
-                                label={<Typography className={classes.label} color="textPrimary" align="left" variant="body1">I accept the <Link href="#TCs" onclick={preventDefault}> Terms & Conditions</Link></Typography>}
+                                label={<Typography className={classes.label} color="textPrimary" align="left" variant="body1">I accept the <Link href="#TCs" onClick={preventDefault}> Terms & Conditions</Link></Typography>}
                             />
                             </Grid>
                         </Grid>
