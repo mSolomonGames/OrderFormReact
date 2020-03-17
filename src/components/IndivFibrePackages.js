@@ -1,5 +1,6 @@
-import React, {useState} from 'react';
+import React, {useState,useContext, useEffect} from 'react';
 import { Paper,List,ListItem,ListItemText, Grid,makeStyles , Typography} from '@material-ui/core';
+import { AppContext } from '../context';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -26,6 +27,8 @@ const useStyles = makeStyles(theme => ({
 
 
 export default () => {
+    const [state, setState ] = useContext(AppContext);
+
     const classes = useStyles();
     const packages = [
         {"name": "mb Uncapped",
@@ -52,16 +55,29 @@ export default () => {
         "period": "24 Months",
         "price": 0},
     ];
-    const [selectedIndex, setSelectedIndex] = React.useState(0);
-    const [selectedIndexInstall, setSelectedIndexInstall] = React.useState(0);
+    const [fibre_package_index, setFibrePackageIndex] = useState(1);
+    const [fibre_package_install_index, setFibrePackageInstallIndex] = useState(1);
 
-    const handleListItemClick = (event, index) => {
-    setSelectedIndex(index);
-    };
+    // const handleFibreItemClick = (event, index) => {
+    //     setFibrePackageIndex(index);
+    // };
 
-    const handleListItemClickInstall = (event, index) => {
-        setSelectedIndexInstall(index);
-        };
+    // const handleInstallItemClick = (event, index) => {
+    //     setFibrePackageInstallIndex(index);
+    //     };
+
+    // useEffect(() => {        
+    //     setState(state => {return{ ...state.fibre_connection, package_name: fibre_package_index}});      
+    //     //setState(state => {return{ ...state.fibre_connection,  package_install: fibre_package_install_index}});
+    //     }, [fibre_package_index],
+        
+    //     );
+
+    useEffect(() => { 
+        //setState(state => {return {...state, fibre: {fibre_connection: fibre_package_index} }});
+        //setState(state => {return {...state.fibre, fibre_install: fibre_package_index}});
+
+    }, [fibre_package_index]);
 
     return (        
         <Grid container className={classes.root} justify="center" alignItems="center">
@@ -69,13 +85,14 @@ export default () => {
             <Grid item md={12} xs={12}>
                 <Typography className={classes.mainHeading} color="textSecondary" align="center" variant="h4">Fibre Packages</Typography>
                 <List className={classes.listOptions} component="nav" aria-label="">
+                    
                     {packages.map((p, i) => (
-                         <ListItem
-                         
+                    <ListItem                         
                          button
-                         selected={selectedIndex === i}
-                         onClick={event => handleListItemClick(event, i)}
-                         value={i}
+                         selected={fibre_package_index === i}
+                         onClick={e => setFibrePackageIndex(i)}
+                            value={fibre_package_index}
+                            key={i}
                          >
                          <ListItemText primary={<Typography align="center" >{p.speed} {p.name} , R{p.price}</Typography>}/>
                          </ListItem>
@@ -99,12 +116,14 @@ export default () => {
                 </Grid>
                 <Grid container justify="center">
                 <Grid item md={12} xs={12}>
-                        <List className={classes.listOptions} component="nav" aria-label="secondary mailbox folder">
-                    {installation.map((p, i) => (
+                        <List className={classes.listOptions} component="nav" aria-label="">
+                    {installation.map((p, index) => (
                          <ListItem
                          button
-                         selected={selectedIndexInstall === i}
-                         onClick={event => handleListItemClickInstall(event, i)}
+                         value={fibre_package_install_index}
+                         selected={fibre_package_install_index === index}
+                         onClick={e => setFibrePackageInstallIndex(index)}
+                         key={index}
                          >
                          <ListItemText primary= {
                             <Grid container>

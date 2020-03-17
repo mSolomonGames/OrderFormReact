@@ -17,4 +17,5 @@ export { default as TermsAndConditions } from './TermsAndConditions';
 export { default as Mandate } from './Mandate';
 export { default as DebitOrder } from './DebitOrder';
 export { default as DebitOrderInstruction } from './DebitOrderInstruction';
+export {default as DebitBankForm} from './DebitBankForm';
 

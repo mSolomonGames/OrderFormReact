@@ -9,6 +9,7 @@ import moment from 'moment';
 const useStyles = makeStyles(theme => ({
     root: {
         marginBottom: theme.spacing(4),
+        //paddingLeft: theme.spacing(6), 
         
     },
     heading: {
@@ -21,14 +22,22 @@ const useStyles = makeStyles(theme => ({
         padding: theme.spacing(4),
         textAlign: 'left',
         backgroundColor: theme.palette.primary.light,
+        
+        [theme.breakpoints.down("sm")]:{
+            
+            //paddingLeft: theme.spacing(30), //trying to center 
+        },
+        
     },
     label: {
-        marginBottom: theme.spacing(1)
+        marginBottom: theme.spacing(1),
+        //paddingLeft: theme.spa
     }, 
     dropDown: {
-        width: '200px',
+        width: theme.spacing(30),
         backgroundColor: theme.palette.secondary.main,
-        minHeight: '50px'
+        minHeight: '50px',
+        
     }
 }));
 
@@ -45,7 +54,7 @@ export default () => {
                 <Grid item className={classes.heading} xs={12} md={12}>
                     <Typography variant="h6">PAYMENT DETAILS</Typography>
                 </Grid>                
-                <Grid item xs={12} md={state.paymentType === "debit" ? 8 : 12} className={classes.body}>
+                <Grid item xs={12} sm={12} md={state.paymentType === "debit" ? 8 : 12} className={classes.body}>
                     <InputLabel id="paymentTypeLabel" className={classes.label}>Payment Type</InputLabel>
                     <Select
                         className={classes.dropDown}
@@ -55,12 +64,12 @@ export default () => {
                         onChange={e => setState(state => {return {...state, paymentType: e.target.value}})}
                         color="primary"
                     >
-                        <MenuItem value={'eft'}><Typography color="textPrimary" variant="h5" align="center">EFT</Typography></MenuItem>
-                        <MenuItem value={'debit'}><Typography color="textPrimary" variant="h5" align="center">Debit</Typography></MenuItem>
+                        <MenuItem value={'eft'}><Typography color="textPrimary" variant="h6" align="center">EFT</Typography></MenuItem>
+                        <MenuItem value={'debit'}><Typography color="textPrimary" variant="h6" align="center">Debit</Typography></MenuItem>
                     </Select>
                 </Grid>
                 {state.paymentType === "debit" ? (
-                    <Grid item xs={12} md={4} className={classes.body}>
+                    <Grid item xs={12} sm={12} md={4} className={classes.body}>
                     
                     <InputLabel id="payDateLabel" className={classes.label}>Payment Date</InputLabel>
                     <Select

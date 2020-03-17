@@ -1,5 +1,6 @@
-import React, {useState} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import { Paper,List,ListItem,ListItemText, Grid,makeStyles , Typography} from '@material-ui/core';
+import { AppContext } from '../context';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -20,6 +21,8 @@ const useStyles = makeStyles(theme => ({
 
 
 export default () => {
+    const [state, setState ] = useContext(AppContext);
+
     const classes = useStyles();
     const packages24 = [
         {"name": "mb Broadband",
@@ -42,11 +45,18 @@ export default () => {
     const installation = {
         price: 5500,
     }
-    const [selectedIndex, setSelectedIndex] = React.useState(0);
+    const [wireless_package_index, setWirelessPackageIndex] = useState(1);
 
-    const handleListItemClick = (event, index) => {
-    setSelectedIndex(index);
-    };
+    // const handleListItemClick = (event, index) => {
+    // setSelectedIndex(index);
+    // };
+    useEffect(() => {        
+        setState(state => ({ ...state, wireless_package:  wireless_package_index}));      
+        
+        }, [wireless_package_index],
+        
+        );
+
 
     return (        
         <Grid container className={classes.root} justify="center" alignItems="center">
@@ -57,8 +67,10 @@ export default () => {
                     {packages24.map((p, i) => (
                          <ListItem
                          button
-                         selected={selectedIndex === i}
-                         onClick={event => handleListItemClick(event, i)}
+                         selected={wireless_package_index === i}
+                         onClick={event => setWirelessPackageIndex(i)}
+                         value={wireless_package_index}
+                         key={i}
                          >
                          <ListItemText primary={<Typography align="center" >{p.speed}{p.name} , R{p.price24}</Typography>} />
                          </ListItem>
@@ -72,8 +84,10 @@ export default () => {
                     {packages24.map((p, i) => (
                          <ListItem
                          button
-                         selected={selectedIndex === i+4}
-                         onClick={event => handleListItemClick(event, i+4)}
+                         selected={wireless_package_index === i+4}
+                         onClick={event => setWirelessPackageIndex(i+4)}
+                         value={wireless_package_index}
+                         key={i+4}
                          >
                          <ListItemText primary={<Typography align="center" >{p.speed}{p.name} , R{p.price36}</Typography>} />
                          </ListItem>

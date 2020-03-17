@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { Paper, makeStyles, Grid, Typography, Select, MenuItem, InputLabel } from '@material-ui/core';
+import React, { useContext, useState, useEffect } from 'react';
+import { Paper, makeStyles, Grid, Typography, Select, MenuItem,TextField ,InputLabel, FormControlLabel, Checkbox } from '@material-ui/core';
 import { IndividualForm, CompanyForm } from '../components';
 import { AppContext } from '../context';
 
@@ -20,15 +20,71 @@ const useStyles = makeStyles(theme => ({
         padding: theme.spacing(4),
         textAlign: 'left'
     },
-    label: {
-        marginBottom: theme.spacing(1)
+    label: {        
+        marginBottom: theme.spacing(1),
+        color: "black",       
+        
+    }, 
+    acceptLabel: {
+        width: '90%',
+        marginBottom: theme.spacing(1),
+        color: "black",
+        //marginLeft: theme.spacing(2),
+        [theme.breakpoints.down('sm')]:{
+            marginLeft: theme.spacing(2),           
+        },
+        [theme.breakpoints.up('md')]:{
+            maxWidth: '70%',    
+            marginLeft: theme.spacing(3),    
+        }
     }, 
     dropDown: {
         width: '200px'
     },
     date:{
         fontWeight: "bold",
+    },
+    formLabel: {
+        // marginBottom: theme.spacing(1),
+        
+        //margin: '0 auto'
+        [theme.breakpoints.down('sm')]:{
+            marginLeft: theme.spacing(2),           
+        },
+        [theme.breakpoints.up('md')]:{
+            marginLeft: theme.spacing(3),         
+        }
+        
+    },
+    // acceptBox:{
+    //     background: theme.palette.secondary.main,
+    // },
+    textField: {
+        //margin: "0 40px 20px 0",
+        marginBottom:theme.spacing(3),
+        //width: "400px",
+        maxWidth: '90%',
+        width: theme.spacing(40),
+        //paddingLeft: theme.spacing(2),
+        
+        
+    },
+    inputGroup: {
+        marginTop: theme.spacing(2),
+        
+    },
+    paddingCenter:{
+        [theme.breakpoints.down('sm')]:{
+            paddingLeft: theme.spacing(3),
+            marginTop: theme.spacing(8),
+        },
+        [theme.breakpoints.up('md')]:{
+            paddingLeft: theme.spacing(6),
+            marginTop: theme.spacing(10),
+        }
+        
     }
+    
 }));
 
 
@@ -36,8 +92,16 @@ const useStyles = makeStyles(theme => ({
 export default () => {
     const classes = useStyles();
     const [state, setState ] = useContext(AppContext);
+
+    const [mandateFullName, setMandateFullName] = useState('');
+
+    useEffect(() => {
+        setState(state => ({ ...state, mandateFullName:  mandateFullName}));
+    }, [mandateFullName]
     
-    console.log(state.payDate);
+    );
+    
+    //console.log(state.payDate);
     return (        
         
         <Grid container className={classes.root} justify="center">
@@ -93,6 +157,31 @@ export default () => {
             that third party, but in the absence of such assignment of the Agreement, this Authority and Mandate cannot be assigned to any
             third party.</Typography>
                 
+            </Grid>
+            <Grid item md={7}xs={10} className={classes.paddingCenter}>
+                <InputLabel id="referredLabel" className={classes.label}>Name and Surname</InputLabel>
+                <TextField onChange={e => setMandateFullName(e.target.value)}  value={mandateFullName} className={classes.textField} />
+            </Grid>
+            <Grid item md={7} xs={10}>
+            <FormControlLabel  align="center" className={classes.formLabel}
+                                control={
+                                <Checkbox 
+                                    className={classes.acceptBox}                               
+                                    onChange={e => setState(state => {return {...state, acceptedMandate: e.target.checked}})}
+                                    checked={state.acceptedMandate}
+                                    color="primary"
+                                    required={true}
+                                                                     
+                                />
+                                }
+                            label={<Typography className={classes.acceptLabel} color="textPrimary" align="left" variant="body1">I, {mandateFullName} 
+                                    , accept this contract starting on the date of {state.payDate}, for the amount of R</Typography>
+
+                                 
+                               
+                            }
+                            />
+
             </Grid>
         </Grid>
         

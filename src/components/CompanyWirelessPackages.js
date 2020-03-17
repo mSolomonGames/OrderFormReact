@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React, {useState,useContext,useEffect} from 'react';
 import { Paper,List,ListItem,ListItemText, Grid,makeStyles , Typography} from '@material-ui/core';
-
+import { AppContext } from '../context';
 const useStyles = makeStyles(theme => ({
     root: {
         marginBottom: theme.spacing(0),
@@ -42,12 +42,15 @@ export default () => {
     const installation = {
         "price24": 5500,
         "price36": 6500
-    }
-    const [selectedIndex, setSelectedIndex] = React.useState(0);
-
-    const handleListItemClick = (event, index) => {
-    setSelectedIndex(index);
     };
+
+    const [state, setState ] = useContext(AppContext);
+    const [selectedIndex, setSelectedIndex] = React.useState(1);
+
+    useEffect(() => {        
+        setState(state => ({ ...state, company_wireless_package:  selectedIndex}));
+        }, [selectedIndex],        
+        );
 
     return (        
         <Grid container className={classes.root} justify="center" alignItems="center">
@@ -59,7 +62,9 @@ export default () => {
                          <ListItem
                          button
                          selected={selectedIndex === i}
-                         onClick={event => handleListItemClick(event, i)}
+                         onClick={event => setSelectedIndex(i)}
+                         value={selectedIndex}
+                         key={i}
                          >
                          <ListItemText primary={<Typography align="center" >{p.speed}{p.name} , R{p.price24}</Typography>} />
                          </ListItem>
@@ -74,7 +79,9 @@ export default () => {
                          <ListItem
                          button
                          selected={selectedIndex === i+4}
-                         onClick={event => handleListItemClick(event, i+4)}
+                         onClick={event => setSelectedIndex(i+4)}
+                         value={selectedIndex}
+                         key={i+4}
                          >
                          <ListItemText primary={<Typography align="center" >{p.speed}{p.name} , R{p.price36}</Typography>} />
                          </ListItem>

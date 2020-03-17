@@ -13,8 +13,7 @@ const initialState = {
     paymentType:'eft',
     acceptedTandCs: false,
     payDate: moment().add('months', 1).date(1).format('LL'),
-     
-    
+    acceptedMandate: false,
 }
 
 

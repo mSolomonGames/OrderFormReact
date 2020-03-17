@@ -17,14 +17,15 @@ const useStyles = makeStyles(theme => ({
     firstItem: {
         marginTop: theme.spacing(3),
     },
-    acceptBox:{
-        background: theme.palette.secondary.main,
-    },
+    // acceptBox:{
+    //     background: theme.palette.secondary.main,
+    // },
     label :{
-        marginLeft: theme.spacing(2)
+        marginLeft: theme.spacing(3)
     },
     formLabel: {
         marginBottom: theme.spacing(1),
+        marginLeft: theme.spacing(4)
         
     }
 }));
@@ -61,20 +62,20 @@ export default () => {
                         </Grid>
                         
                     </Grid>
-                    <Grid item md={4}>
+                    <Grid item md={6}>
                         <Grid container justify="center">
                             <Grid item md={8}>
                             <FormControlLabel  align="center" className={classes.formLabel}
                                 control={
                                 <Checkbox 
                                     className={classes.acceptBox}                               
-                                    onChange={e => setState(state => {return {...state, acceptedTandCs: e.target.value}})}
-                                    value={state.acceptedTandCs}
+                                    onChange={e => setState(state => {return {...state, acceptedTandCs: e.target.checked}})}
+                                    checked={state.acceptedTandCs}
                                     color="primary"
-                                    required={true}                                 
+                                                                     
                                 />
                                 }
-                                label={<Typography className={classes.label} color="textPrimary" align="right" variant="body1">I accept the Terms & Conditions</Typography>}
+                                label={<Typography className={classes.label} color="textPrimary" align="left" variant="body1">I accept the Terms & Conditions</Typography>}
                             />
                             </Grid>
                         </Grid>

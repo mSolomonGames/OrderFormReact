@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Paper, makeStyles, Grid, Typography, Select, MenuItem, InputLabel } from '@material-ui/core';
 import { IndividualForm, CompanyForm } from '../components';
 import { AppContext } from '../context';
@@ -36,14 +36,17 @@ const useStyles = makeStyles(theme => ({
 
 
 
+
 export default () => {
     const classes = useStyles();
     const [state, setState ] = useContext(AppContext);
 
+    
+
     return (
         
         <Paper className={classes.root}>
-            <Grid container>
+            <Grid container justify="center">
                 <Grid item className={classes.heading} md={12} xs={12}>
                     <Typography variant="h6">CLIENT DETAILS</Typography>
                 </Grid>

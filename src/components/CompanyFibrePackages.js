@@ -1,5 +1,6 @@
-import React, {useState} from 'react';
+import React, {useState,useContext,useEffect} from 'react';
 import { Paper,List,ListItem,ListItemText, Grid,makeStyles , Typography} from '@material-ui/core';
+import { AppContext } from '../context';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -50,11 +51,14 @@ export default () => {
     const installation = {
         "price": 8500, 
     }
-    const [selectedIndex, setSelectedIndex] = React.useState(0);
 
-    const handleListItemClick = (event, index) => {
-    setSelectedIndex(index);
-    };
+    const [state, setState ] = useContext(AppContext);
+    const [selectedIndex, setSelectedIndex] = React.useState(1);
+
+    useEffect(() => {        
+        setState(state => ({ ...state, company_fibre_package:  selectedIndex}));
+        }, [selectedIndex],        
+        );
 
     return (        
         <Grid container className={classes.root} justify="center" alignItems="center">
@@ -66,7 +70,9 @@ export default () => {
                          <ListItem
                          button
                          selected={selectedIndex === i}
-                         onClick={event => handleListItemClick(event, i)}
+                         onClick={e => setSelectedIndex(i)}
+                         value={selectedIndex}
+                         key={i}
                          >
                          <ListItemText primary={<Typography align="center" >{p.speed}{p.name} , R{p.price24}</Typography>} />
                          </ListItem>
@@ -81,7 +87,9 @@ export default () => {
                          <ListItem
                          button
                          selected={selectedIndex === i+6}
-                         onClick={event => handleListItemClick(event, i+6)}
+                         onClick={event => setSelectedIndex(i+6)}
+                         value={selectedIndex}
+                         key={i+6}
                          >
                          <ListItemText primary={<Typography align="center" >{p.speed}{p.name} , R{p.price36}</Typography>} />
                          </ListItem>

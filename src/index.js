@@ -4,13 +4,14 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { ThemeProvider } from './theme';
 import { AppContextProvider } from './context';
-import Theme from './theme/Theme';
+//import Theme from './theme/Theme';
+
 
 ReactDOM.render(
         
         <ThemeProvider>
             <AppContextProvider>
-                <div style={{backgroundColor: "#333333"}}><App /></div>
+                <div style={{backgroundColor: "#333333", paddingBottom:"60px"}}><App /></div>
                 
             </AppContextProvider>
             

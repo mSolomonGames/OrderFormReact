@@ -1,7 +1,7 @@
 import React from 'react';
 import { Paper,Grid, makeStyles, Typography } from '@material-ui/core';
 //import Mandate from "./Mandate";
-import { DebitOrderInstruction, Mandate } from '.';
+import { DebitOrderInstruction, Mandate ,DebitBankForm} from '.';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -33,6 +33,9 @@ export default () => {
             </Grid>
             <Grid item md={12} xs={12}>
                 <DebitOrderInstruction />
+            </Grid>
+            <Grid item md={12}  xs={12}>
+                <DebitBankForm />
             </Grid>
             <Grid item md={12}  xs={12}>
                 <Mandate />
