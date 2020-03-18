@@ -47,10 +47,37 @@ export default () => {
     const [state, setState ] = useContext(AppContext);
     const [selectedIndex, setSelectedIndex] = React.useState(1);
 
-    useEffect(() => {        
-        setState(state => ({ ...state, company_wireless_package:  selectedIndex}));
-        }, [selectedIndex],        
-        );
+
+    const [wirelessPackage, setFibrePackage]= useState({
+        speed: "",
+        price: "",
+        install_price: "",         
+    });
+
+    function setWifiPackage36(i){
+        setSelectedIndex(i);
+        wirelessPackage.speed = packages24[i].speed;
+        wirelessPackage.price = packages24[i].price36;
+        wirelessPackage.install_price = installation.price36;
+    }
+
+    function setWifiPackage24(i){
+        setSelectedIndex(i);
+        wirelessPackage.speed = packages24[i].speed;
+        wirelessPackage.price = packages24[i].price24;
+        wirelessPackage.install_price = installation.price24;
+    }
+
+
+    useEffect(() => {
+        if(state.pullData){
+            // const wirelessDetails = {
+            //     wirelessPackage,
+            // };
+            setState(state => { return {...state, wirelessPackage}});
+        }
+        
+    }, [state.pullData])
 
     return (        
         <Grid container className={classes.root} justify="center" alignItems="center">
@@ -62,7 +89,7 @@ export default () => {
                          <ListItem
                          button
                          selected={selectedIndex === i}
-                         onClick={event => setSelectedIndex(i)}
+                         onClick={event => setWifiPackage24(i)}
                          value={selectedIndex}
                          key={i}
                          >
@@ -79,7 +106,7 @@ export default () => {
                          <ListItem
                          button
                          selected={selectedIndex === i+4}
-                         onClick={event => setSelectedIndex(i+4)}
+                         onClick={event => setWifiPackage36(i+4)}
                          value={selectedIndex}
                          key={i+4}
                          >

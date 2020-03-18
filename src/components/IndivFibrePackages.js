@@ -62,26 +62,42 @@ export default () => {
     const [fibre_package_index, setFibrePackageIndex] = useState(1);
     const [fibre_package_install_index, setFibrePackageInstallIndex] = useState(1);
 
-    // const handleFibreItemClick = (event, index) => {
-    //     setFibrePackageIndex(index);
-    // };
-
-    // const handleInstallItemClick = (event, index) => {
-    //     setFibrePackageInstallIndex(index);
-    //     };
-
-    // useEffect(() => {        
-    //     setState(state => {return{ ...state.fibre_connection, package_name: fibre_package_index}});      
-    //     //setState(state => {return{ ...state.fibre_connection,  package_install: fibre_package_install_index}});
-    //     }, [fibre_package_index],
+    const [fibrePackage, setFibrePackage]= useState({
+        speed: "",
+        price: "",           
+    });
         
-    //     );
+    const [fibreInstall, setInstallPackage]= useState({
+        name: "",
+        period: "",
+        price: "",           
+    });
+    
+    useEffect(() => {
+        if(state.pullData){
+            const fibreDetails = {
+                fibrePackage,
+                fibreInstall,
+            };
+            setState(state => { return {...state, fibreDetails}});
+        }
+        
+    }, [state.pullData])
 
-    useEffect(() => { 
-        //setState(state => {return {...state, fibre: {fibre_connection: fibre_package_index} }});
-        //setState(state => {return {...state.fibre, fibre_install: fibre_package_index}});
+    function FillInstallDetails(index){
+        setFibrePackageInstallIndex(index);
+        fibreInstall.name = installation[index].name;
+        fibreInstall.period = installation[index].period;
+        fibreInstall.price = installation[index].price;  
+        console.log(fibreInstall);      
+    }
 
-    }, [fibre_package_index]);
+    function FillPackageDetails(index){
+        setFibrePackageIndex(index);
+        fibrePackage.speed = packages[index].speed;
+        fibrePackage.price = packages[index].price;
+        console.log(fibrePackage);        
+    }
 
     return (        
         <Grid container className={classes.root} justify="center" alignItems="flex-start">
@@ -94,7 +110,7 @@ export default () => {
                     <ListItem                         
                          button
                          selected={fibre_package_index === i}
-                         onClick={e => setFibrePackageIndex(i)}
+                         onClick={e => FillPackageDetails(i)}
                             value={fibre_package_index}
                             key={i}
                          >
@@ -117,7 +133,7 @@ export default () => {
                          button
                          value={fibre_package_install_index}
                          selected={fibre_package_install_index === index}
-                         onClick={e => setFibrePackageInstallIndex(index)}
+                         onClick={e => FillInstallDetails(index)}
                          key={index}
                          >
                          <ListItemText primary= {

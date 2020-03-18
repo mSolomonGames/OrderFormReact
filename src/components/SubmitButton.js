@@ -23,12 +23,12 @@ export default () => {
     const [open, setOpen] = React.useState(false);
     
     const handleSubmitForm = () => {
-
-        setOpen(true);
+        console.log("Clicked on submit");
+        //setOpen(true);
     };
 
     const handleClose = () => {
-        setOpen(false);
+        //setOpen(false);
     };
 
     
@@ -93,12 +93,22 @@ export default () => {
         //<Paper className={classes.root}>
             <Grid container justify="center">
                 <Grid item md={4}>
-                <Button className={classes.buttonStyle} 
-                type="submit"
-                onClick={handleSubmitForm} 
-                variant="contained" color="primary" disabled={!state.acceptedTandCs}>
-                    <Typography>Submit</Typography>
-                </Button>
+                {state.paymentType ==='debit'?  
+                    <Button className={classes.buttonStyle} 
+                        type="submit"
+                        onClick={handleSubmitForm} 
+                        variant="contained" color="primary"  disabled={state.acceptedTandCs === true ? state.acceptedMandate === true ? false : true : true}>
+                            <Typography>Submit</Typography>
+                    </Button>
+                    : 
+                    <Button className={classes.buttonStyle} 
+                        type="submit"
+                        onClick={handleSubmitForm} 
+                        variant="contained" color="primary"  disabled={!state.acceptedTandCs}>
+                            <Typography>Submit</Typography>
+                    </Button>}
+                
+                
                 <Dialog
                     open={open}
                     onClose={handleClose}

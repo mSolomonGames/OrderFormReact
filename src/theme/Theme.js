@@ -89,12 +89,12 @@ const theme = createMuiTheme({
           },     
           
         },
-        checked:{
-          background: "#000",
-          "&.Mui-checked:hover": {
-            backgroundColor: 'red',
-          },  
-        }
+        // checked:{
+        //   background: "#000",
+        //   "&.Mui-checked:hover": {
+        //     backgroundColor: 'red',
+        //   },  
+        // }
       },
       
   }
