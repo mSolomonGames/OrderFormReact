@@ -63,14 +63,14 @@ export default () => {
     const [fibre_package_install_index, setFibrePackageInstallIndex] = useState(1);
 
     const [fibrePackage, setFibrePackage]= useState({
-        speed: "",
-        price: "",           
+        speed: packages[fibre_package_index].speed,
+        price: packages[fibre_package_index].price,           
     });
         
     const [fibreInstall, setInstallPackage]= useState({
-        name: "",
-        period: "",
-        price: "",           
+        name: installation[fibre_package_install_index].name,
+        period: installation[fibre_package_install_index].period,
+        price: installation[fibre_package_install_index].price,           
     });
     
     useEffect(() => {

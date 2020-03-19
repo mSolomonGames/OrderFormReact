@@ -47,17 +47,36 @@ export default () => {
     }
     const [wireless_package_index, setWirelessPackageIndex] = useState(1);
 
-    // const handleListItemClick = (event, index) => {
-    // setSelectedIndex(index);
-    // };
-    useEffect(() => {        
-        setState(state => ({ ...state, wireless_package:  wireless_package_index}));      
+    const [wirelessPackage, setWireless]= useState({
         
-        }, [wireless_package_index],
-        
-        );
+        speed: packages24[wireless_package_index].speed,
+        price: packages24[wireless_package_index].price36,
+        install_price: installation.price,         
+    });
+
+    function setWifiPackage36(i){
+        setWirelessPackageIndex(i);
+        wirelessPackage.speed = packages24[i].speed;
+        wirelessPackage.price = packages24[i].price36;
+        wirelessPackage.install_price = installation.price;
+    }
+
+    function setWifiPackage24(i){
+        setWirelessPackageIndex(i);
+        wirelessPackage.speed = packages24[i].speed;
+        wirelessPackage.price = packages24[i].price24;
+        wirelessPackage.install_price = installation.price;
+    }
 
 
+    useEffect(() => {
+        if(state.pullData){
+            setState(state => { return {...state, wirelessPackage}});
+        }
+        
+    }, [state.pullData])
+    const offset = 4 ;
+    
     return (        
         <Grid container className={classes.root} justify="center" alignItems="center">
             
@@ -68,7 +87,7 @@ export default () => {
                          <ListItem
                          button
                          selected={wireless_package_index === i}
-                         onClick={event => setWirelessPackageIndex(i)}
+                         onClick={event => setWifiPackage24(i)}
                          value={wireless_package_index}
                          key={i}
                          >
@@ -84,10 +103,10 @@ export default () => {
                     {packages24.map((p, i) => (
                          <ListItem
                          button
-                         selected={wireless_package_index === i+4}
-                         onClick={event => setWirelessPackageIndex(i+4)}
+                         selected={wireless_package_index === i}
+                         onClick={event => setWifiPackage36(i)}
                          value={wireless_package_index}
-                         key={i+4}
+                         key={i}
                          >
                          <ListItemText primary={<Typography align="center" >{p.speed}{p.name} , R{p.price36}</Typography>} />
                          </ListItem>

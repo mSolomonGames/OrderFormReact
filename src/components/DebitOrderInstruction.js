@@ -33,38 +33,40 @@ export default () => {
     const [debtor_cont_num,setContactNum] = useState('');
     const [debtor_amount,setAmount] = useState('');
 
-    useEffect(() => {        
-        setState(state => ({ ...state, debtor_name:  debtor_name}));
-        setState(state => ({...state, debtor_name_register_bank: debtor_name_register_bank}));
-        setState(state => ({...state, debtor_address: debtor_address}));
-        setState(state => ({...state, debtor_cont_num: debtor_cont_num}));
-        setState(state => ({...state, debtor_amount: debtor_amount}));
+    useEffect(() => {
+        if(state.pullData){
+            const debitInstructionDetails = {
+                debtor_name,
+                debtor_name_register_bank,
+                debtor_address,
+                debtor_cont_num,
+                debtor_amount,
+            }            
+            setState(state => { return {...state, debitInstructionDetails}});
+        }
         
-      }, [debtor_name, debtor_name_register_bank, debtor_address, debtor_cont_num, debtor_amount ],
-        
-      );
+    }, [state.pullData])
 
     return (
         <Grid container className={classes.root} justify="center">
             <Grid item md={5} sm={10} xs={10} className={classes.inputGroup}>
                 <InputLabel  id="debtNameLabel" className={classes.label}>Name (Debtor)</InputLabel>
-                <TextField onChange={e => setName(e.target.value)}  value={debtor_name} className={classes.textField} />
+                <TextField required={true} onChange={e => setName(e.target.value)}  value={debtor_name} className={classes.textField} />
             </Grid>
             <Grid item md={5}  xs={10} className={classes.inputGroup}>
                 <InputLabel id="debtNameBankLabel" className={classes.label}>Abbreviated name as registered with bank</InputLabel>
-                <TextField onChange={e => setNameRegisterBank(e.target.value)}  value={debtor_name_register_bank}className={classes.textField} />
+                <TextField required={true} onChange={e => setNameRegisterBank(e.target.value)}  value={debtor_name_register_bank}className={classes.textField} />
             </Grid>
             <Grid item md={5}  xs={10} className={classes.inputGroup}>
                 <InputLabel id="addressLabel" className={classes.label}>Address</InputLabel>
-                <TextField onChange={e => setAddress(e.target.value)}  value={debtor_address}multiline  className={classes.textField} />
+                <TextField required={true} onChange={e => setAddress(e.target.value)}  value={debtor_address}multiline  className={classes.textField} />
             </Grid>
             <Grid item md={5}  xs={10} className={classes.inputGroup}>
                 <InputLabel id="contactNumLabel" className={classes.label}>Contact Number</InputLabel>
-                <TextField onChange={e => setContactNum(e.target.value)}  value={debtor_cont_num} className={classes.textField} />
+                <TextField required={true} onChange={e => setContactNum(e.target.value)}  value={debtor_cont_num} className={classes.textField} />
             </Grid>
             <Grid item md={5}  xs={10} className={classes.inputGroup}>
-                <InputLabel id="debitAmountLabel" className={classes.label}>Debit Amount</InputLabel>
-                <TextField />
+            <Typography variant="h6">Debit Amount: *auto</Typography>
             </Grid>
             <Grid item md={5}  xs={10} className={classes.inputGroup}>
                 <Typography variant="h6">Debit Order Date: {state.payDate}</Typography>

@@ -20,11 +20,7 @@ const useStyles = makeStyles(theme => ({
 
 export default () => {
     const classes = useStyles();
-    const bank = "First National Bank";
-    const branchCode = "123456";
-    const accountType = "Cheque";
-    const accountNumber = "12345678909876";
-    const accountName = "Crisp Fibre Ltd";
+    
 
     return (
         <Grid container className={classes.root}>

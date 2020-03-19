@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
     }
 
 }));
-
+const defaultPackage = 1;
 
 export default () => {
     const classes = useStyles();
@@ -52,13 +52,40 @@ export default () => {
         "price": 8500, 
     }
 
+    
+
     const [state, setState ] = useContext(AppContext);
     const [selectedIndex, setSelectedIndex] = React.useState(1);
 
-    useEffect(() => {        
-        setState(state => ({ ...state, company_fibre_package:  selectedIndex}));
-        }, [selectedIndex],        
-        );
+    const [fibrePackage, setFibrePackage]= useState({
+        speed: packages24[defaultPackage].speed,
+        price: packages24[defaultPackage].price24,
+        install_price: installation.price,         
+    });
+
+    function setWifiPackage36(i){
+        setSelectedIndex(i);
+        fibrePackage.speed = packages24[i-offsetMonths].speed;
+        fibrePackage.price = packages24[i-offsetMonths].price36;
+        fibrePackage.install_price = installation.price;
+    }
+
+    function setWifiPackage24(i){
+        setSelectedIndex(i);
+        fibrePackage.speed = packages24[i].speed;
+        fibrePackage.price = packages24[i].price24;
+        fibrePackage.install_price = installation.price;
+    }
+
+    useEffect(() => {
+        if(state.pullData){
+            setState(state => { return {...state, fibrePackage}});
+        }
+        
+    }, [state.pullData])
+
+    const offsetMonths = 6;
+    console.log("Comp Fibre", fibrePackage);
 
     return (        
         <Grid container className={classes.root} justify="center" alignItems="center">
@@ -70,7 +97,7 @@ export default () => {
                          <ListItem
                          button
                          selected={selectedIndex === i}
-                         onClick={e => setSelectedIndex(i)}
+                         onClick={e => setWifiPackage24(i)}
                          value={selectedIndex}
                          key={i}
                          >
@@ -86,10 +113,10 @@ export default () => {
                     {packages24.map((p, i) => (
                          <ListItem
                          button
-                         selected={selectedIndex === i+6}
-                         onClick={event => setSelectedIndex(i+6)}
-                         value={selectedIndex}
-                         key={i+6}
+                         selected={selectedIndex === i+offsetMonths}
+                         onClick={event => setWifiPackage36(i+offsetMonths)}
+                         value={selectedIndex+offsetMonths}
+                         key={i+offsetMonths}
                          >
                          <ListItemText primary={<Typography align="center" >{p.speed}{p.name} , R{p.price36}</Typography>} />
                          </ListItem>

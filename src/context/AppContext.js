@@ -14,16 +14,16 @@ const initialState = {
     acceptedTandCs: false,
     payDate: moment().add('months', 1).date(1).format('LL'),
     acceptedMandate: false,
-    userDetails: {
-        fullName: "",
+    // userDetails: {
+    //     fullName: "",
         
-    },
-    compDetails: {
-        name:"",
-    },
-    debitDetails: {
-        name:"",
-    }
+    // },
+    // compDetails: {
+    //     name:"",
+    // },
+    // debitDetails: {
+    //     name:"",
+    // }
 
     
 }

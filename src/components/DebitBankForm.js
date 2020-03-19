@@ -49,18 +49,23 @@ export default () => {
     const [accountType,setAccountType] = useState('');
     
     
+    
+    useEffect(() => {
+        if(state.pullData){
+            const debitBankDetails = {
+                bank,
+                branch,
+                branchCode,
+                accountName,
+                accountNumber,
+                accountType,
+            }  
+            setState(state => { return {...state, debitBankDetails}});
+        }
+        
+    }, [state.pullData])
 
-    useEffect(() => {        
-        setState(state => ({ ...state, bank:  bank}));
-        setState(state => ({ ...state, branch:  branch}));
-        setState(state => ({...state, branchCode: branchCode}));
-        setState(state => ({...state, accountName: accountName}));
-        setState(state => ({...state, accountType: accountType}));
-        setState(state => ({...state, accountNumber: accountNumber}));
-        
-      }, [bank,branch, branchCode, accountName, accountNumber,accountType],
-        
-      );
+  
 
     return (
         <Grid container className={classes.root} alignItems="center" justify="center">
@@ -74,27 +79,27 @@ export default () => {
                 <Grid container justify="flex-start">
                     <Grid item md={6} xs={10} className={classes.inputGroup}>
                         <InputLabel  id="bankLabel"  className={classes.label}>Bank</InputLabel>
-                        <TextField onChange={e => setBranch(e.target.value)}  value={bank} className={classes.textField}  />
+                        <TextField required={true} onChange={e => setBank(e.target.value)}  value={bank} className={classes.textField}  />
                     </Grid>
                     <Grid item md={6} xs={10} className={classes.inputGroup}>
                         <InputLabel  id="branchLabel"  className={classes.label}>Branch</InputLabel>
-                        <TextField onChange={e => setBranch(e.target.value)}  value={branch} className={classes.textField}  />
+                        <TextField required={true} onChange={e => setBranch(e.target.value)}  value={branch} className={classes.textField}  />
                     </Grid>
                     <Grid item md={6} xs={10} className={classes.inputGroup}>
                         <InputLabel id="branchCodeLabel"  className={classes.label}>Branch Code</InputLabel>
-                        <TextField onChange={e => setBranchCode(e.target.value)}  value={branchCode} className={classes.textField} />
+                        <TextField required={true} onChange={e => setBranchCode(e.target.value)}  value={branchCode} className={classes.textField} />
                     </Grid>
                     <Grid item md={6} xs={10} className={classes.inputGroup}>
                         <InputLabel id="accountNameLabel"className={classes.label}>Account Name</InputLabel>
-                        <TextField onChange={e => setAccountName(e.target.value)}  value={accountName} className={classes.textField} />
+                        <TextField required={true} onChange={e => setAccountName(e.target.value)}  value={accountName} className={classes.textField} />
                     </Grid>
                     <Grid item md={6} xs={10} className={classes.inputGroup}>
                         <InputLabel id="accountNumberLabel" className={classes.label}>Account Number</InputLabel>
-                        <TextField onChange={e => setAccountNumber(e.target.value)}  value={accountNumber} className={classes.textField} />
+                        <TextField required={true} onChange={e => setAccountNumber(e.target.value)}  value={accountNumber} className={classes.textField} />
                     </Grid>
                     <Grid item  md={6} xs={10}className={classes.inputGroup} >
                         <InputLabel id="accountTypeLabel"  className={classes.label}>Account Type</InputLabel>
-                        <TextField onChange={e => setAccountType(e.target.value)}  value={accountType}  className={classes.textField} />
+                        <TextField required={true} onChange={e => setAccountType(e.target.value)}  value={accountType}  className={classes.textField} />
                     </Grid>
 
                 </Grid>

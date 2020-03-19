@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
     }
 
 }));
-
+const defaultPackage = 1;
 
 export default () => {
     const classes = useStyles();
@@ -45,19 +45,23 @@ export default () => {
     };
 
     const [state, setState ] = useContext(AppContext);
-    const [selectedIndex, setSelectedIndex] = React.useState(1);
+    const [selectedIndex, setSelectedIndex] = React.useState(defaultPackage);
 
-
-    const [wirelessPackage, setFibrePackage]= useState({
-        speed: "",
-        price: "",
-        install_price: "",         
+    
+    const [wirelessPackage, setWirelessPackage]= useState({        
+        speed: packages24[defaultPackage].speed,
+        price:  packages24[defaultPackage].price24,
+        install_price: installation.price24,        
     });
+    
+    //console.log("Selected ", selectedIndex);
+    //console.log("Wireless " ,wirelessPackage);
+    
 
     function setWifiPackage36(i){
         setSelectedIndex(i);
-        wirelessPackage.speed = packages24[i].speed;
-        wirelessPackage.price = packages24[i].price36;
+        wirelessPackage.speed = packages24[i-offsetPackages].speed;
+        wirelessPackage.price = packages24[i-offsetPackages].price36;
         wirelessPackage.install_price = installation.price36;
     }
 
@@ -71,13 +75,12 @@ export default () => {
 
     useEffect(() => {
         if(state.pullData){
-            // const wirelessDetails = {
-            //     wirelessPackage,
-            // };
             setState(state => { return {...state, wirelessPackage}});
         }
         
     }, [state.pullData])
+
+    const offsetPackages = 4
 
     return (        
         <Grid container className={classes.root} justify="center" alignItems="center">
@@ -105,10 +108,10 @@ export default () => {
                     {packages24.map((p, i) => (
                          <ListItem
                          button
-                         selected={selectedIndex === i+4}
-                         onClick={event => setWifiPackage36(i+4)}
-                         value={selectedIndex}
-                         key={i+4}
+                         selected={selectedIndex === i+offsetPackages}
+                         onClick={event => setWifiPackage36(i+offsetPackages)}
+                         value={selectedIndex+offsetPackages}
+                         key={i+offsetPackages}
                          >
                          <ListItemText primary={<Typography align="center" >{p.speed}{p.name} , R{p.price36}</Typography>} />
                          </ListItem>
