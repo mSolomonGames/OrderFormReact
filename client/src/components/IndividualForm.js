@@ -85,46 +85,50 @@ export default () => {
     //   }, [fullName, id_num, tel_num, cell_num, street_addr, city, post_code, email, refered_by ]
         
     //   );
+    function redAsterix(){
+        return <span style={{color: 'red'}}>*</span>;
+    }
 
     return (
         <Grid container className={classes.root} justify="center">
             <Grid item md={5} xs={10}className={classes.inputGroup}>
-                <InputLabel  id="fullNameLabel"  className={classes.label}>Full Name</InputLabel>
-                <TextField required={true} 
+    <InputLabel label="firstName" id="fullNameLabel"  className={classes.label}>Full Name {redAsterix()}</InputLabel>
+                <TextField required
+                    
                     onChange={e => setFullName(e.target.value)}
                     value={fullName} className={classes.textField}  />
                 {/* <TextField required={true} onChange={e => setFullName(e.target.value)}  value={fullName} className={classes.textField}  /> */}
             </Grid>
             <Grid item  md={5} xs={10} className={classes.inputGroup}>
-                <InputLabel id="idNumberLabel"  className={classes.label}>SA ID Number</InputLabel>
+                <InputLabel id="idNumberLabel"  className={classes.label}>SA ID Number {redAsterix()}</InputLabel>
                 <TextField required={true} onChange={e => setIdNum(e.target.value)}  value={id_num} className={classes.textField} />
             </Grid>
             <Grid item md={5} xs={10} className={classes.inputGroup}>
-                <InputLabel id="telephoneLabel"className={classes.label}>Telephone Number</InputLabel>
+                <InputLabel id="telephoneLabel"className={classes.label}>Telephone Number {redAsterix()}</InputLabel>
                 <TextField required={true} onChange={e => setTelNum(e.target.value)}  value={tel_num} className={classes.textField} />
             </Grid>
             <Grid item md={5} xs={10} className={classes.inputGroup}>
-                <InputLabel id="cellphoneLabel" className={classes.label}>Cellphone Number</InputLabel>
+                <InputLabel id="cellphoneLabel" className={classes.label}>Cellphone Number {redAsterix()}</InputLabel>
                 <TextField type="tel" required={true} onChange={e => setCellNum(e.target.value)}  value={cell_num} className={classes.textField} />
             </Grid>
             <Grid item md={10} xs={10} className={classes.inputGroup}>
-                <InputLabel id="addressLabel"  className={classes.label}>Street Address</InputLabel>
+                <InputLabel id="addressLabel"  className={classes.label}>Street Address {redAsterix()}</InputLabel>
                 <TextField required={true} className={classes.streetField} onChange={e => setStreetAddr(e.target.value)}  value={street_addr}  multiline />
             </Grid>
             <Grid item md={5} xs={10} className={classes.inputGroup}>
-                <InputLabel id="cityLabel"  className={classes.label}>City</InputLabel>
+                <InputLabel id="cityLabel"  className={classes.label}>City {redAsterix()}</InputLabel>
                 <TextField required={true} onChange={e => setCity(e.target.value)}  value={city} className={classes.textField} />
             </Grid>
             <Grid item md={5} xs={10} className={classes.inputGroup}>
-                <InputLabel id="postalLabel"  className={classes.label}>Postal Code</InputLabel>
+                <InputLabel id="postalLabel"  className={classes.label}>Postal Code {redAsterix()}</InputLabel>
                 <TextField required={true} onChange={e => setPostCode(e.target.value)}  value={post_code} className={classes.textField} />
             </Grid>
             <Grid item md={5} xs={10} className={classes.inputGroup}>
-                <InputLabel id="emailLabel"  className={classes.label}>Email Address</InputLabel>
+                <InputLabel id="emailLabel"  className={classes.label}>Email Address {redAsterix()}</InputLabel>
                 <TextField required={true} type="email" onChange={e => setEmail(e.target.value)}  value={email} className={classes.textField} />
             </Grid>
             <Grid item md={5} xs={10} className={classes.inputGroup}>
-                <InputLabel id="referredLabel" className={classes.label}>Referred By</InputLabel>
+                <InputLabel id="referredLabel" className={classes.label}>Referred By {redAsterix()}</InputLabel>
                 <TextField required={true} onChange={e => setReferedBy(e.target.value)}  value={refered_by} className={classes.textField} />
             </Grid>
         </Grid>

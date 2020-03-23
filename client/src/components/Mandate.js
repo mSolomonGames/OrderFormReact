@@ -210,7 +210,7 @@ export default () => {
             </Grid>
             <Grid item md={7}xs={10} className={classes.paddingCenter}>
                 <InputLabel id="referredLabel" className={classes.label}>Name and Surname</InputLabel>
-                <TextField onChange={e => setMandateFullName(e.target.value)}  value={mandateFullName} className={classes.textField} />
+                <TextField required onChange={e => setMandateFullName(e.target.value)}  value={mandateFullName} className={classes.textField} />
             </Grid>
             
             <Grid item md={7} xs={10}>
@@ -226,12 +226,7 @@ export default () => {
                                 />
                                 }
                             label={<Typography className={classes.acceptLabel} color="textPrimary" align="left" variant="body1">I, {mandateFullName} 
-                                    , accept this contract starting on the date of {state.payDate}, for the amount of R{getAmount()}.</Typography>
-
-                                 
-                               
-                            }
-                            />
+                                    , accept this contract starting on the date of {state.payDate}, for the amount of R{getAmount()}.</Typography>}/>
 
             </Grid>
         </Grid>

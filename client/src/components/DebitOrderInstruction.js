@@ -48,7 +48,8 @@ export default () => {
     // }, [state.pullData]);
 
     useEffect(() => {
-       // if(state.pullData){
+        if(state.pullData){
+
             const debitInstructionDetails = {
                 debtor_name,
                 debtor_name_register_bank,
@@ -57,9 +58,9 @@ export default () => {
                 debtor_amount,
             }            
             setState(state => { return {...state, debitInstructionDetails}});
-       // }
+        }
         
-    }, []);
+    }, [state.pullData]);
 
     function getDebitAmount(){
         var debit = 0;
@@ -109,23 +110,26 @@ export default () => {
         }
         return debit;
     }
+    function redAsterix(){
+        return <span style={{color: 'red'}}>*</span>;
+    }
 
     return (
         <Grid container className={classes.root} justify="center">
             <Grid item md={5} sm={10} xs={10} className={classes.inputGroup}>
-                <InputLabel  id="debtNameLabel" className={classes.label}>Name (Debtor)</InputLabel>
+                <InputLabel  id="debtNameLabel" className={classes.label}>Name (Debtor) {redAsterix()}</InputLabel>
                 <TextField required={true} onChange={e => setName(e.target.value)}  value={debtor_name} className={classes.textField} />
             </Grid>
             <Grid item md={5}  xs={10} className={classes.inputGroup}>
-                <InputLabel id="debtNameBankLabel" className={classes.label}>Abbreviated name as registered with bank</InputLabel>
+                <InputLabel id="debtNameBankLabel" className={classes.label}>Abbreviated name as registered with bank {redAsterix()}</InputLabel>
                 <TextField required={true} onChange={e => setNameRegisterBank(e.target.value)}  value={debtor_name_register_bank}className={classes.textField} />
             </Grid>
             <Grid item md={5}  xs={10} className={classes.inputGroup}>
-                <InputLabel id="addressLabel" className={classes.label}>Address</InputLabel>
+                <InputLabel id="addressLabel" className={classes.label}>Address {redAsterix()}</InputLabel>
                 <TextField required={true} onChange={e => setAddress(e.target.value)}  value={debtor_address}multiline  className={classes.textField} />
             </Grid>
             <Grid item md={5}  xs={10} className={classes.inputGroup}>
-                <InputLabel id="contactNumLabel" className={classes.label}>Contact Number</InputLabel>
+                <InputLabel id="contactNumLabel" className={classes.label}>Contact Number {redAsterix()}</InputLabel>
                 <TextField required={true} onChange={e => setContactNum(e.target.value)}  value={debtor_cont_num} className={classes.textField} />
             </Grid>
             <Grid item md={5}  xs={10} className={classes.inputGroup}>

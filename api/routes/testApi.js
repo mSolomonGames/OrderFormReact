@@ -342,60 +342,60 @@ router.post("/", function(req, res) {
     const thankYou = `<p>Thank you for choosing Crisp Fibre, where we put your needs first.</p>`
     const clientOutput  = outputHeading + thankYou + `<table border="1">` + (applicationType === "individual" ? outputUserDetails : outputCompDetails) + connectionDetails + outputPayment +`</table>`
 
-
+    
     //const fullOutput = "<table>" + outputUserDetails + "</table>";
 
-    // let transporter = nodemailer.createTransport({
-    //     host: "smtp.gmail.com",
-    //     port: 587,
-    //     secure: false, // true for 465, false for other ports
-    //     auth: {
-    //         user: 'michaelsolomon.games@gmail.com', // generated ethereal user
-    //         pass: '' // generated ethereal password
-    //     },
-    //     tls: {
-    //         rejectUnauthorized: false
-    //     }
-    //     });
-    //     const clientEmail = (typeof userDetails === 'undefined' ? compDetails.email : userDetails.email);
-    //     // send mail with defined transport object
-    //     let clientMailOptions = {
-    //     from: '"Crisp Fibre" <michaelsolomon.games@gmail.com>', // sender address
-    //     to: clientEmail, // list of receivers
-    //     subject: "Order Form Submittion (client) ", // Subject line
-    //     text: "Hello world?", // plain text body
-    //     html: clientOutput // html body
-    //     };
+    let transporter = nodemailer.createTransport({
+        host: "smtp.gmail.com",
+        port: 587,
+        secure: false, // true for 465, false for other ports
+        auth: {
+            user: process.env.NODEMAILER_ADDRESS, // generated ethereal user
+            pass: process.env.NODEMAILER_PASS // generated ethereal password
+        },
+        tls: {
+            rejectUnauthorized: false
+        }
+        });
+        const clientEmail = (typeof userDetails === 'undefined' ? compDetails.email : userDetails.email);
+        // send mail with defined transport object
+        let clientMailOptions = {
+        from: '"Crisp Fibre" <michaelsolomon.games@gmail.com>', // sender address
+        to: clientEmail, // list of receivers
+        subject: "Order Form Submittion (client) ", // Subject line
+        text: "Hello world?", // plain text body
+        html: clientOutput // html body
+        };
 
-    //     let crispMailOptions = {
-    //         from: '"Crisp Fibre" <michaelsolomon.games@gmail.com>', // sender address
-    //         to: "migalGaming@ymail.com", // list of receivers
-    //         subject: "Order Form Submittion (crisp) ", // Subject line
-    //         text: "Hello world?", // plain text body
-    //         html: fullOutput // html body
-    //         };
+        let crispMailOptions = {
+            from: '"Crisp Fibre" <michaelsolomon.games@gmail.com>', // sender address
+            to: "migalGaming@gmail.com", // list of receivers
+            subject: "Order Form Submittion (crisp) ", // Subject line
+            text: "Hello world?", // plain text body
+            html: fullOutput // html body
+            };
 
 
-    //     transporter.sendMail(clientMailOptions, (error, info) => {
-    //         if(error){
-    //             return console.log(error);
-    //         }
-    //         console.log("Message sent client: %s", info.messageId);
-    //         console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-    //     })
+        transporter.sendMail(clientMailOptions, (error, info) => {
+            if(error){
+                return console.log(error);
+            }
+            console.log("Message sent client: %s", info.messageId);
+            console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+        })
 
-    //     transporter.sendMail(crispMailOptions, (error, info) => {
-    //         if(error){
-    //             return console.log(error);
-    //         }
-    //         console.log("Message sent crisp: %s", info.messageId);
-    //         console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-    //     })
+        transporter.sendMail(crispMailOptions, (error, info) => {
+            if(error){
+                return console.log(error);
+            }
+            console.log("Message sent crisp: %s", info.messageId);
+            console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+        })
 
-        console.log("All", req.body);
+        //console.log("All", req.body);
         
         ///LETS RETURN THE PDF
-        res.send("Email sent successfull");
+        res.send("Emails sent successfull");
     });
 
 

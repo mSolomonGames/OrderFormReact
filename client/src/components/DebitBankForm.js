@@ -65,7 +65,9 @@ export default () => {
         
     }, [state.pullData])
 
-  
+    function redAsterix(){
+        return <span style={{color: 'red'}}>*</span>;
+    }
 
     return (
         <Grid container className={classes.root} alignItems="center" justify="center">
@@ -78,27 +80,27 @@ export default () => {
                 
                 <Grid container justify="flex-start">
                     <Grid item md={6} xs={10} className={classes.inputGroup}>
-                        <InputLabel  id="bankLabel"  className={classes.label}>Bank</InputLabel>
+                        <InputLabel  id="bankLabel"  className={classes.label}>Bank {redAsterix()}</InputLabel>
                         <TextField required={true} onChange={e => setBank(e.target.value)}  value={bank} className={classes.textField}  />
                     </Grid>
                     <Grid item md={6} xs={10} className={classes.inputGroup}>
-                        <InputLabel  id="branchLabel"  className={classes.label}>Branch</InputLabel>
+                        <InputLabel  id="branchLabel"  className={classes.label}>Branch {redAsterix()}</InputLabel>
                         <TextField required={true} onChange={e => setBranch(e.target.value)}  value={branch} className={classes.textField}  />
                     </Grid>
                     <Grid item md={6} xs={10} className={classes.inputGroup}>
-                        <InputLabel id="branchCodeLabel"  className={classes.label}>Branch Code</InputLabel>
+                        <InputLabel id="branchCodeLabel"  className={classes.label}>Branch Code {redAsterix()}</InputLabel>
                         <TextField required={true} onChange={e => setBranchCode(e.target.value)}  value={branchCode} className={classes.textField} />
                     </Grid>
                     <Grid item md={6} xs={10} className={classes.inputGroup}>
-                        <InputLabel id="accountNameLabel"className={classes.label}>Account Name</InputLabel>
+                        <InputLabel id="accountNameLabel"className={classes.label}>Account Name {redAsterix()}</InputLabel>
                         <TextField required={true} onChange={e => setAccountName(e.target.value)}  value={accountName} className={classes.textField} />
                     </Grid>
                     <Grid item md={6} xs={10} className={classes.inputGroup}>
-                        <InputLabel id="accountNumberLabel" className={classes.label}>Account Number</InputLabel>
+                        <InputLabel id="accountNumberLabel" className={classes.label}>Account Number {redAsterix()}</InputLabel>
                         <TextField required={true} onChange={e => setAccountNumber(e.target.value)}  value={accountNumber} className={classes.textField} />
                     </Grid>
                     <Grid item  md={6} xs={10}className={classes.inputGroup} >
-                        <InputLabel id="accountTypeLabel"  className={classes.label}>Account Type</InputLabel>
+                        <InputLabel id="accountTypeLabel"  className={classes.label}>Account Type {redAsterix()}</InputLabel>
                         <TextField required={true} onChange={e => setAccountType(e.target.value)}  value={accountType}  className={classes.textField} />
                     </Grid>
 

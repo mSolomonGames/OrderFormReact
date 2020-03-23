@@ -4,18 +4,19 @@ var cors = require('cors');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const dotenv = require('dotenv').config();
 
-var whitelist = ['http://localhost:3000', 'http://localhost:3000']
+// var whitelist = ['http://localhost:3000', 'http://localhost:3000']
 
-var corsOptions = {
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true)
-    } else {
-      callback(new Error('Not allowed by CORS ' + origin))
-    }
-  }
-}
+// var corsOptions = {
+//   origin: function (origin, callback) {
+//     if (whitelist.indexOf(origin) !== -1) {
+//       callback(null, true)
+//     } else {
+//       callback(new Error('Not allowed by CORS ' + origin))
+//     }
+//   }
+// }
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -44,6 +45,8 @@ app.use("/testAPI", testAPIRouter);
 app.use(function(req, res, next) {
   next(createError(404));
 });
+
+
 
 // error handler
 app.use(function(err, req, res, next) {
