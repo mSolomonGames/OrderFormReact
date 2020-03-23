@@ -89,7 +89,7 @@ export default () => {
     }, [state.pullData])
 
     const offsetMonths = 6;
-    console.log("Comp Fibre", fibreDetails);
+    //console.log("Comp Fibre", fibreDetails);
 
     return (        
         <Grid container className={classes.root} justify="center" alignItems="center">

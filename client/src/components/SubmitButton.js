@@ -23,7 +23,7 @@ export default () => {
     const [open, setOpen] = React.useState(false);
     
     const handleSubmitForm = () => {
-        console.log("Clicked on submit");
+        //console.log("Clicked on submit");
         //setOpen(true);
     };
 
@@ -33,7 +33,7 @@ export default () => {
 
     
     function submitForm(){
-        console.log(state);
+        //console.log(state);
         if(state.applicationType === "individual"){
             //validate indiv client information
             if(state.connectionType === "fibre"){

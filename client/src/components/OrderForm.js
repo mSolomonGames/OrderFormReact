@@ -16,7 +16,10 @@ export default () => {
     
     function handleSubmit(e){
         e.preventDefault();
-        console.log("Handle submit");        
+          
+        //open dialog
+
+        // let them check info
         setState(state => {return {...state, pullData: true}});
         
         //console.log("cheers"); 
@@ -24,6 +27,9 @@ export default () => {
     useEffect(() => {        
         //console.log('Submitted: ',state.pullData, state);        
         if(state.pullData){
+
+            //setting submit to true only when dialog accept button has been clicked
+
             setState(state => {return {...state, submit: true}});
             setTimeout(setState(state => {return {...state, pullData: false}}), 2000);
         }
@@ -37,8 +43,11 @@ export default () => {
             console.log('Submitted up to date', state);
             axios.post('http://localhost:9000/testApi', state )
                 .then(res => {
-                    console.log(res);
-                    console.log(res.data);
+                    console.log(res)
+                    console.log(res.data)
+                // .catch(function(error){
+                //     console.log(error)
+                // });
             });
             setTimeout(setState(state => {return {...state, submit: false}}), 2000);
             //setState(state => {return {...state, pullData: false}});

@@ -22,62 +22,43 @@ router.post("/", function(req, res) {
     const debitInstructionDetails = req.body.debitInstructionDetails;
     const wirelessPackage = req.body.wirelessPackage;
 
-    // //console.log("Yo mama", req.body);
-    // const output = `<h3>Submitted Order Form</h3>
-    //         <table>
-    //             <tr>
-    //                 <td></td>
-    //                 <td></td>
-    //             </tr>
-    //             <tr>
-    //                 <td></td>
-    //                 <td></td>
-    //             </tr>
-    //             <tr>
-    //                 <td></td>
-    //                 <td></td>
-    //             </tr>
-    //             <tr>
-    //                 <td></td>
-    //                 <td></td>
-    //             </tr>            
-    //         </table>` ;
+    
     const outputHeading = getHeadingOutput();
-    console.log("Testing: ", fibreDetails);
+    
 
     function getHeadingOutput(){
         if(connectionType === 'fibre'){
             if(applicationType === 'individual'){
                 //outputHeading = ;
-                console.log("FTTH");
+                //console.log("FTTH");
                 return `<h3>FTTH Order Form Submitted</h3>`;
             }
             else if(applicationType === 'company'){
                 //outputHeading = `<h3>FTTB Order Form Submitted</h3>`;
-                console.log("FTTB");
+                //console.log("FTTB");
                 return `<h3>FTTB Order Form Submitted</h3>`;
             }
             else{
-                console.log("numbnut", applicationType);
+                //console.log("numbnut", applicationType);
             }
         }
         else if(connectionType === 'wireless'){
             if(applicationType === 'individual'){
                 //outputHeading = `<h3>WTTH Order Form Submitted</h3>`;
-                console.log("WTTH");
+                //console.log("WTTH");
                 return `<h3>WTTH Order Form Submitted</h3>`;
             }
             else if(applicationType === 'company'){
                 //outputHeading = `<h3>WTTB Order Form Submitted</h3>`;
-                console.log("WTTB");
+                //console.log("WTTB");
                 return `<h3>WTTB Order Form Submitted</h3>`;
             }
             else{
-                console.log("numbnut2", applicationType );
+                //console.log("numbnut2", applicationType );
             }
         }
         else{
-            console.log("numbnut3", connectionType);
+            //console.log("numbnut3", connectionType);
         }
         return ``;
     }
@@ -317,6 +298,10 @@ router.post("/", function(req, res) {
                         <td>${debitInstructionDetails.debtor_address}</td>
                     </tr>
                     <tr>
+                        <td>Amount</td>
+                        <td>${debitInstructionDetails.debtor_amount}</td>
+                    </tr>
+                    <tr>
                         <th colspan="2">Bank Details</th>
                     </tr>
                     <tr>
@@ -354,8 +339,8 @@ router.post("/", function(req, res) {
     //console.log("Testing: ", connectionDetails.toString());
     
     const fullOutput = outputHeading + `<table border="1">` + (applicationType === "individual" ? outputUserDetails : outputCompDetails) + connectionDetails + outputPayment +`</table>`
-    
-
+    const thankYou = `<p>Thank you for choosing Crisp Fibre, where we put your needs first.</p>`
+    const clientOutput  = outputHeading + thankYou + `<table border="1">` + (applicationType === "individual" ? outputUserDetails : outputCompDetails) + connectionDetails + outputPayment +`</table>`
 
 
     //const fullOutput = "<table>" + outputUserDetails + "</table>";
@@ -366,74 +351,52 @@ router.post("/", function(req, res) {
     //     secure: false, // true for 465, false for other ports
     //     auth: {
     //         user: 'michaelsolomon.games@gmail.com', // generated ethereal user
-    //         pass: 'Wicked@games123' // generated ethereal password
+    //         pass: '' // generated ethereal password
     //     },
     //     tls: {
     //         rejectUnauthorized: false
     //     }
     //     });
-
+    //     const clientEmail = (typeof userDetails === 'undefined' ? compDetails.email : userDetails.email);
     //     // send mail with defined transport object
-    //     let mailOptions = {
-    //     from: '"Crispy Fibre 👻" <michaelsolomon.games@gmail.com>', // sender address
-    //     to: "migalGaming@gmail.com", // list of receivers
-    //     subject: "Order Form Submittion ", // Subject line
+    //     let clientMailOptions = {
+    //     from: '"Crisp Fibre" <michaelsolomon.games@gmail.com>', // sender address
+    //     to: clientEmail, // list of receivers
+    //     subject: "Order Form Submittion (client) ", // Subject line
     //     text: "Hello world?", // plain text body
-    //     html: fullOutput // html body
+    //     html: clientOutput // html body
     //     };
-    //     transporter.sendMail(mailOptions, (error, info) => {
+
+    //     let crispMailOptions = {
+    //         from: '"Crisp Fibre" <michaelsolomon.games@gmail.com>', // sender address
+    //         to: "migalGaming@ymail.com", // list of receivers
+    //         subject: "Order Form Submittion (crisp) ", // Subject line
+    //         text: "Hello world?", // plain text body
+    //         html: fullOutput // html body
+    //         };
+
+
+    //     transporter.sendMail(clientMailOptions, (error, info) => {
     //         if(error){
     //             return console.log(error);
     //         }
-    //         console.log("Message sent: %s", info.messageId);
+    //         console.log("Message sent client: %s", info.messageId);
+    //         console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+    //     })
+
+    //     transporter.sendMail(crispMailOptions, (error, info) => {
+    //         if(error){
+    //             return console.log(error);
+    //         }
+    //         console.log("Message sent crisp: %s", info.messageId);
     //         console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
     //     })
 
         console.log("All", req.body);
-        //console.log("compDetails", req.body.compDetails);
+        
+        ///LETS RETURN THE PDF
+        res.send("Email sent successfull");
     });
-// router.post("/", function(req, res) {
-//     const output = `
-//     <You have a new client who submitted a form>
-//     <h3>Client Details</h3>
-//     <ul>
-//         <li>Name: ${req.body.name}</li>
-//         <li>Company: ${req.body.company}</li>
-//         <li>Email: ${req.body.email}</li>
-//         <li>Phone: ${req.body.phone}</li>        
-//     </ul>
-//     <h3>Message</h3>
-//     <p>${req.body.message}</p>`; 
-
-//     let transporter = nodemailer.createTransport({
-//         host: "smtp.gmail.com",
-//         port: 587,
-//         secure: false, // true for 465, false for other ports
-//         auth: {
-//           user: 'michaelsolomon.games@gmail.com', // generated ethereal user
-//           pass: 'Wicked@games123' // generated ethereal password
-//         },
-//         tls: {
-//             rejectUnauthorized: false
-//         }
-//       });
-    
-//       // send mail with defined transport object
-//       let mailOptions = {
-//         from: '"Crisp Fibre Slette 👻" <michaelsolomon.games@gmail.com>', // sender address
-//         to: "migalGaming@gmail.com", // list of receivers
-//         subject: "Testing Express Server For WebForm - Crisp Fibre", // Subject line
-//         text: "Hello world?", // plain text body
-//         html: output // html body
-//       };
-//       transporter.sendMail(mailOptions, (error, info) => {
-//           if(error){
-//               return console.log(error);
-//           }
-//             console.log("Message sent: %s", info.messageId);
-//             console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-//       })
-// });
 
 
 module.exports = router;

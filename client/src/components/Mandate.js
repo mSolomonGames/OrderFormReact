@@ -137,7 +137,7 @@ export default () => {
         else if(getDay === "15"){
             return "15th";
         }
-        console.log(getDay);
+        //console.log(getDay);
         
     }
     //console.log(state.payDate);

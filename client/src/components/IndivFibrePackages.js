@@ -94,22 +94,22 @@ export default () => {
         fibreInstall.name = installation[index].name;
         fibreInstall.period = installation[index].period;
         fibreInstall.price = installation[index].price;  
-        console.log(fibreInstall);      
+        // console.log(fibreInstall);      
     }
 
     function FillPackageDetails(index){
         setFibrePackageIndex(index);
         fibrePackage.speed = packages[index].speed;
         fibrePackage.price = packages[index].price;
-        console.log(fibrePackage);        
+        // console.log(fibrePackage);        
     }
     function getEndOfContract(){
-        console.log("1-", state.payDate.substr(0,2));
-        console.log("2-", state.payDate.substr(3,2));
-        console.log("3-", state.payDate.substr(6,4));
+        // console.log("1-", state.payDate.substr(0,2));
+        // console.log("2-", state.payDate.substr(3,2));
+        // console.log("3-", state.payDate.substr(6,4));
         var temp = new Date(state.payDate.substr(6,4), state.payDate.substr(3,2), state.payDate.substr(0,2));
         var momentObj = moment(temp);
-        console.log("Pleaseseess", fibre_package_install_index);
+        //console.log("Pleaseseess", fibre_package_install_index);
         switch(fibre_package_install_index){
             case 0: {
                 //console.log("sdfsdf", 0);
@@ -119,20 +119,20 @@ export default () => {
                 
             }
             case 1: {
-                console.log("sdfsdf", 1);
+                //console.log("sdfsdf", 1);
                 momentObj.add('months', 12);
                 break;
                 
             }
             case 2: {
-                console.log("sdfsdf", 2);
+                //console.log("sdfsdf", 2);
                 momentObj.add('months', 24);
                 break;
                 
             }
         }
         setEndOfInstall(momentObj.format('DD-MM-YYYY'));
-        console.log("temp ",  momentObj);
+        //console.log("temp ",  momentObj);
     }
 
     return (        
